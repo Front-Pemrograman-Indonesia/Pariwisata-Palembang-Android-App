@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/HotelAston" />
+        tools:srcCompat="@drawable/hotelaston" />
 
     <TextView
         android:id="@+id/HotelAston_text"
@@ -24,6 +24,7 @@
         android:layout_marginStart="90dp"
         android:layout_marginTop="8dp"
         android:text="Hotel Aston"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hotelaston" />
 
@@ -44,6 +45,7 @@
         android:layout_marginStart="90dp"
         android:layout_marginTop="8dp"
         android:text="Hotel The Alts"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hotelthealts" />
 
@@ -55,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hotelthealts"
-        app:srcCompat="@drawable/HotelNovotel" />
+        app:srcCompat="@drawable/hotelnovotel" />
 
     <TextView
         android:id="@+id/HotelNovotel_text"
@@ -64,6 +66,7 @@
         android:layout_marginStart="90dp"
         android:layout_marginTop="8dp"
         android:text="Hotel Novotel"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/HotelNovotel" />
 
@@ -83,6 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="4.6"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageView13"
         app:layout_constraintTop_toBottomOf="@+id/HotelNovotel" />
 
@@ -102,6 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="4.6"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageView14"
         app:layout_constraintTop_toBottomOf="@+id/hotelthealts" />
 
@@ -121,6 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="4.6"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageView15"
         app:layout_constraintTop_toBottomOf="@+id/hotelaston" />
 
