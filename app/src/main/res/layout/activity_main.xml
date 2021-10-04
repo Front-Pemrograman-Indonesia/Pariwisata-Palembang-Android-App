@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/Pempek" />
+        app:srcCompat="@drawable/pempek" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        app:srcCompat="@drawable/MasjidAgung" />
+        app:srcCompat="@drawable/masjidagung" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -68,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:srcCompat="@drawable/PulauKemaro" />
+        app:srcCompat="@drawable/pulaukemaro" />
 
     <ImageView
         android:id="@+id/imageView10"
