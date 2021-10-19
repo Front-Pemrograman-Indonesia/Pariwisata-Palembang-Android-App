@@ -106,7 +106,7 @@
                                 android:layout_alignParentStart="true"
                                 android:background="@android:drawable/btn_star"
                                 android:padding="10dp"
-                                android:src="@drawable/ic_dtl_hotel"
+                                android:src="@drawable/hotel_aston"
                                 android:tint="@android:color/white" />
 
                             <TextView
@@ -134,7 +134,7 @@
                                 android:layout_alignParentStart="true"
                                 android:background="@android:drawable/ic_menu_mapmode"
                                 android:padding="10dp"
-                                android:src="@drawable/ic_dtl_loc"
+                                android:src="@drawable/hotel_aston"
                                 android:tint="@android:color/white" />
 
                             <TextView
@@ -162,7 +162,7 @@
                                 android:layout_alignParentStart="true"
                                 android:background="@android:drawable/ic_menu_call"
                                 android:padding="10dp"
-                                android:src="@drawable/ic_dtl_phone"
+                                android:src="@drawable/hotel_aston"
                                 android:tint="@android:color/white" />
 
                             <TextView
