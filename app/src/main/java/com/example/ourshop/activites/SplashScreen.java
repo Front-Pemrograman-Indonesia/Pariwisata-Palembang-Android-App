@@ -1,15 +1,14 @@
-package com.example.ourshop;
+package com.example.ourshop.activites;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
+
+import com.example.ourshop.R;
+import com.example.ourshop.activites.MainActivity;
 
 public class SplashScreen extends AppCompatActivity {
 

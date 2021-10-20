@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OurShop">
         <activity
-            android:name=".SplashScreen"
+            android:name=".activites.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activites.MainActivity"
             android:exported="true" />
     </application>
 

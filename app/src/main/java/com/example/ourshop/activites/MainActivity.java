@@ -1,9 +1,11 @@
-package com.example.ourshop;
+package com.example.ourshop.activites;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.ourshop.R;
 
 import java.text.DateFormat;
 import java.util.Calendar;
