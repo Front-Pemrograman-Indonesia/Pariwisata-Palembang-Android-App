@@ -9,14 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OurShop">
-        <activity android:name=".activities.ActivityKuliner" />
-        <activity android:name=".activities.ActivityDetailKuliner" />
-        <activity android:name=".activities.ActivityPenginapan" />
-        <activity android:name=".activities.ActivityDetailPenginapan" />
-        <activity android:name=".activities.ActivityWisata" />
-        <activity android:name=".activities.ActivityDetailWisata" />
-        <activity android:name=".activities.ActivityTempatIbadah" />
-        <activity android:name=".activities.ActivityDetailTempatIbadah" />
         <activity
             android:name=".activities.SplashScreen"
             android:exported="true">
