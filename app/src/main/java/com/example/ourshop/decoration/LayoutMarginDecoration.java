@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.azhar.wisatapurwakarta.R;
+import com.example.ourshop.R;
 
 /**
  * Created by Azhar Rivaldi on 06/04/2020.

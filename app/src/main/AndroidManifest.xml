@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OurShop">
+        <activity android:name=".activities.WisataActivity" />
+        <activity android:name=".activities.DetailWisataActivity" />
         <activity
             android:name=".activities.SplashScreen"
             android:exported="true">

@@ -10,6 +10,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <bool name="is_right_to_left">false</bool>
+
     <style name="Toolbar.TitleText" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
     </style>
