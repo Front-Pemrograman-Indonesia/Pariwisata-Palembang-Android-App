@@ -25,4 +25,6 @@ public class MainActivity extends AppCompatActivity {
         TextView textViewDate = findViewById(R.id.tvDate);
         textViewDate.setText(currentDate);
     }
+
+
 }

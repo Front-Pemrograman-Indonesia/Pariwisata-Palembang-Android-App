@@ -7,16 +7,15 @@
     android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tbDetailHotel"
+            android:id="@+id/tbDetailWisata"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@color/primaryColor"
+            android:background="@color/colorPrimary"
             android:theme="@style/AppTheme.AppBarOverlay"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:titleTextAppearance="@style/Toolbar.TitleText" />
@@ -45,34 +44,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
-                        android:id="@+id/map"
-                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                    <ImageView
+                        android:id="@+id/imgWisata"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
-                        map:mapType="normal" />
+                        android:scaleType="fitXY" />
 
                 </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="4dp">
-
-                <TextView
-                    android:id="@+id/hotelDescription"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_toEndOf="@+id/ivDetailHotel"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Hotel Aston adalah hotel yang menyediakan jasa hotel yang dapat anda gunakan untuk berhotel semalam dua malam di hotel"
-                    android:textSize="14sp" />
 
             </androidx.cardview.widget.CardView>
 
@@ -100,25 +78,23 @@
                             android:layout_margin="10dp">
 
                             <ImageView
-                                android:id="@+id/ivDetailHotel"
+                                android:id="@+id/ivNamaWisata"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:layout_alignParentStart="true"
-                                android:background="@android:drawable/btn_star"
+                                android:background="@drawable/bg_circle_radius_primary"
                                 android:padding="10dp"
-                                android:src="@drawable/hotel_aston"
-                                android:contentDescription="TODO" />
+                                android:src="@drawable/ic_dtl_wisata"
+                                android:tint="@android:color/white" />
 
                             <TextView
-                                android:id="@+id/tvNamaHotel"
+                                android:id="@+id/tvNamaWisata"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
                                 android:layout_marginStart="20dp"
-                                android:layout_toEndOf="@+id/ivDetailHotel"
-                                android:textSize="14sp"
-                                android:text="Hotel Aston"
-                                />
+                                android:layout_toEndOf="@+id/ivNamaWisata"
+                                android:textSize="14sp" />
 
                         </RelativeLayout>
 
@@ -128,78 +104,23 @@
                             android:layout_margin="10dp">
 
                             <ImageView
-                                android:id="@+id/ivAddressHotel"
+                                android:id="@+id/ivDescWisata"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:layout_alignParentStart="true"
-                                android:background="@android:drawable/ic_menu_mapmode"
+                                android:background="@drawable/bg_circle_radius_primary"
                                 android:padding="10dp"
-                                android:src="@drawable/hotel_aston" />
+                                android:src="@drawable/ic_dtl_desc"
+                                android:tint="@android:color/white" />
 
                             <TextView
-                                android:id="@+id/tvAddressHotel"
+                                android:id="@+id/tvDescWisata"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
                                 android:layout_marginStart="20dp"
-                                android:layout_toEndOf="@+id/ivAddressHotel"
-                                android:textSize="14sp"
-                                android:text="Jalan Utama Kota Palembang"
-                                />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp">
-
-                            <ImageView
-                                android:id="@+id/hotelDistanceImage"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_alignParentStart="true"
-                                android:background="@android:drawable/ic_menu_call"
-                                android:padding="10dp"
-                                android:src="@drawable/hotel_aston" />
-
-                            <TextView
-                                android:id="@+id/HotelDistance"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:layout_marginStart="20dp"
-                                android:layout_toEndOf="@+id/hotelDistanceImage"
-                                android:textSize="14sp"
-                                android:text="085366225511"
-                                />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp">
-
-                            <ImageView
-                                android:id="@+id/ivPhoneHotel"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_alignParentStart="true"
-                                android:background="@android:drawable/ic_menu_call"
-                                android:padding="10dp"
-                                android:src="@drawable/hotel_aston" />
-
-                            <TextView
-                                android:id="@+id/tvPhoneHotel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:layout_marginStart="20dp"
-                                android:layout_toEndOf="@+id/ivPhoneHotel"
-                                android:textSize="14sp"
-                                android:text="085366225511"
-                                />
+                                android:layout_toEndOf="@+id/ivDescWisata"
+                                android:textSize="14sp" />
 
                         </RelativeLayout>
 
