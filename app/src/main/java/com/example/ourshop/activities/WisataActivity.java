@@ -50,6 +50,7 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
     Toolbar tbWisata;
     double longitude;
     double latitude;
+    String API;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +81,24 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
                         this, Manifest.permission.ACCESS_COARSE_LOCATION) ==
                         PackageManager.PERMISSION_GRANTED
         ) {
+            // You can use the API that requires the permission.
+            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+            if (
+                    ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                            ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+            ) {
+                finish();
+            }
+
+            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
+
+            API = Api.Wisata + "?" + "longitude=" + longitude + "&" + "latitude" + latitude;
+            Log.e("TAG IS ANYTHING", "YOUR MESSAGE" + API);
+
             getWisata();
         } else {
+            Log.e("TAG IS ANYTHING", "YOUR MESSAGE" + "only here");
             // You can directly ask for the permission.
             // The registered ActivityResultCallback gets the result of this request.
             requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION);
@@ -90,19 +107,6 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
 
     private void getWisata() {
         progressDialog.show();
-
-        String API = "";
-
-        // You can use the API that requires the permission.
-        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            finish();
-        }
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
-
-        API = Api.Wisata + "?" + "longitude="+ longitude + "&" + "latitude" + latitude;
-        Log.e("TAG IS ANYTHING","YOUR MESSAGE"+API);
 
         AndroidNetworking.get(API)
                 .setPriority(Priority.HIGH)
@@ -176,13 +180,26 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
     private ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if (isGranted) {
+                    // You can use the API that requires the permission.
+                    LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+                    if (
+                        ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                        ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                    ) {
+                        finish();
+                    }
+
+                    lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
+
+                    API = Api.Wisata + "?" + "longitude="+ longitude + "&" + "latitude" + latitude;
+
                     getWisata();
                 } else {
-                    // Explain to the user that the feature is unavailable because the
-                    // features requires a permission that the user has denied. At the
-                    // same time, respect the user's decision. Don't link to system
-                    // settings in an effort to convince the user to change their
-                    // decision.
+                    Log.e("TAG IS ANYTHING", "longitude" + longitude);
+                    Log.e("TAG IS ANYTHING", "latitude" + latitude);
+                    API = Api.Wisata + "?" + "longitude="+ longitude + "&" + "latitude" + latitude;
+                    getWisata();
                 }
             });
 }
