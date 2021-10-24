@@ -48,9 +48,9 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
     ProgressDialog progressDialog;
     List<ModelWisata> modelWisata = new ArrayList<>();
     Toolbar tbWisata;
-    double longitude;
-    double latitude;
-    String API;
+    public double longitude;
+    public double latitude;
+    public String API;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,19 +84,30 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
             // You can use the API that requires the permission.
             LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-            if (
-                    ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                            ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
-            ) {
-                finish();
+            boolean gps_enabled = false;
+            boolean network_enabled = false;
+
+            try {
+                gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+            } catch(Exception ex) {}
+
+            try {
+                network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+            } catch(Exception ex) {}
+
+            if(gps_enabled && network_enabled) {
+                if (
+                        ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    finish();
+                }
+
+                lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
+            } else {
+                API = Api.Wisata;
+                getWisata();
             }
-
-            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
-
-            API = Api.Wisata + "?" + "longitude=" + longitude + "&" + "latitude" + latitude;
-            Log.e("TAG IS ANYTHING", "YOUR MESSAGE" + API);
-
-            getWisata();
         } else {
             Log.e("TAG IS ANYTHING", "YOUR MESSAGE" + "only here");
             // You can directly ask for the permission.
@@ -107,7 +118,7 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
 
     private void getWisata() {
         progressDialog.show();
-
+        Log.e("TAG IS ANYTHING", "Final API" + API);
         AndroidNetworking.get(API)
                 .setPriority(Priority.HIGH)
                 .build()
@@ -150,6 +161,10 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
         public void onLocationChanged(Location location) {
             longitude = location.getLongitude();
             latitude = location.getLatitude();
+            Log.e("TAG IS ANYTHING", "setting the longitude latitude" + latitude + longitude);
+            API = Api.Wisata + "?" + "longitude=" + longitude + "&" + "latitude" + latitude;
+
+            getWisata();
         }
     };
 
@@ -196,9 +211,7 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
 
                     getWisata();
                 } else {
-                    Log.e("TAG IS ANYTHING", "longitude" + longitude);
-                    Log.e("TAG IS ANYTHING", "latitude" + latitude);
-                    API = Api.Wisata + "?" + "longitude="+ longitude + "&" + "latitude" + latitude;
+                    API = Api.Wisata;
                     getWisata();
                 }
             });
