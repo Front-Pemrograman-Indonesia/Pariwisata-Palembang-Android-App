@@ -3,6 +3,7 @@ package com.example.ourshop.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -35,7 +36,7 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
     LayoutMarginDecoration gridMargin;
     WisataAdapter kulinerAdapter;
     ProgressDialog progressDialog;
-    List<ModelWisata> modelKuliner = new ArrayList<>();
+    List<ModelWisata> modelWisata = new ArrayList<>();
     Toolbar tbWisata;
 
     @Override
@@ -75,15 +76,19 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
                     public void onResponse(JSONObject response) {
                         try {
                             progressDialog.dismiss();
-                            JSONArray playerArray = response.getJSONArray("wisata");
+                            JSONArray playerArray = response.getJSONArray("data");
+                            Log.e("TAG IS ANYTHING","YOUR MESSAGE"+playerArray);
                             for (int i = 0; i < playerArray.length(); i++) {
                                 JSONObject temp = playerArray.getJSONObject(i);
                                 ModelWisata dataApi = new ModelWisata();
+
                                 dataApi.setIdWisata(temp.getString("id"));
                                 dataApi.setTxtNamaWisata(temp.getString("nama"));
-                                dataApi.setGambarWisata(temp.getString("gambar_url"));
-                                dataApi.setKategoriWisata(temp.getString("kategori"));
-                                modelKuliner.add(dataApi);
+                                dataApi.setGambarWisata(Api.BaseUrl + temp.getString("thumbnail"));
+                                Log.e("TAG IS ANYTHING","YOUR MESSAGE"+Api.BaseUrl + temp.getString("thumbnail"));
+                                dataApi.setKategoriWisata("random dulu");
+
+                                modelWisata.add(dataApi);
                                 showWisata();
                             }
                         } catch (JSONException e) {
@@ -103,7 +108,7 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
     }
 
     private void showWisata() {
-        kulinerAdapter = new WisataAdapter(WisataActivity.this, modelKuliner, this);
+        kulinerAdapter = new WisataAdapter(WisataActivity.this, modelWisata, this);
         rvWisata.setAdapter(kulinerAdapter);
     }
 
