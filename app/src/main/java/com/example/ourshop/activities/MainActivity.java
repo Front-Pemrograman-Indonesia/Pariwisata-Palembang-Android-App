@@ -93,11 +93,18 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.onSel
 
     }
 
+    public void wisataActivity(View view) {
+        startActivity(new Intent(MainActivity.this, WisataActivity.class));
+    }
+
     @Override
     public void onSelected(ModelMain mdlMain) {
         switch (mdlMain.getTxtName()) {
             case "Wisata":
                 startActivity(new Intent(MainActivity.this, WisataActivity.class));
+                break;
+            case "Kuliner":
+                startActivity(new Intent(MainActivity.this, KulinerActivity.class));
                 break;
         }
     }
