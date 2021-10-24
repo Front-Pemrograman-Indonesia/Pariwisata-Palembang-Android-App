@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
 
+        // ini adalah komen yang dibutuhkan
         TextView textViewDate = findViewById(R.id.tvDate);
         textViewDate.setText(currentDate);
     }
