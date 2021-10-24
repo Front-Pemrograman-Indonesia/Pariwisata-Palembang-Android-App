@@ -1,6 +1,7 @@
 package com.example.ourshop.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -69,21 +70,23 @@ public class DetailWisataActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
+                        try {
+                            Log.e("TAG IS ANYTHING","YOUR MESSAGE"+response);
+                            JSONObject respon1 = response.getJSONObject("data");
 
-                                NamaWisata = response.getString("nama");
-                                Desc = response.getString("deskripsi");
+                            Log.e("TAG IS ANYTHING","YOUR MESSAGE"+respon1);
+                            NamaWisata = respon1.getString("name");
+                            Desc = respon1.getString("description");
+                            Log.e("TAG IS ANYTHING","YOUR MESSAGE"+NamaWisata);
 
-                                //set Text
-                                tvNamaWisata.setText(NamaWisata);
-                                tvDescWisata.setText(Desc);
+                            //set Text
+                            tvNamaWisata.setText(NamaWisata);
+                            tvDescWisata.setText(Desc);
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                                Toast.makeText(DetailWisataActivity.this,
-                                        "Gagal menampilkan data!", Toast.LENGTH_SHORT).show();
-                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(DetailWisataActivity.this,
+                                    "Gagal menampilkan data!", Toast.LENGTH_SHORT).show();
                         }
                     }
 

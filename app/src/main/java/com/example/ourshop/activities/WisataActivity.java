@@ -1,14 +1,23 @@
 package com.example.ourshop.activities;
 
+import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,7 +54,7 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
         setContentView(R.layout.activity_wisata);
 
         tbWisata = findViewById(R.id.toolbar_wisata);
-        tbWisata.setTitle("Daftar Wisata Purwakarta");
+        tbWisata.setTitle("Daftar Wisata Palembang");
         setSupportActionBar(tbWisata);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -63,12 +72,33 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
         rvWisata.addItemDecoration(gridMargin);
         rvWisata.setHasFixedSize(true);
 
-        getWisata();
+        if (
+            ContextCompat.checkSelfPermission(
+            this, Manifest.permission.ACCESS_COARSE_LOCATION) ==
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            getWisata();
+        } else {
+            // You can directly ask for the permission.
+            // The registered ActivityResultCallback gets the result of this request.
+            requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION);
+        }
     }
 
     private void getWisata() {
         progressDialog.show();
-        AndroidNetworking.get(Api.Wisata)
+
+        String API = "";
+
+        // You can use the API that requires the permission.
+        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        double longitude = location.getLongitude();
+        double latitude = location.getLatitude();
+        API = Api.Wisata + "?" + "longitude="+ longitude + "&" + "latitude" + latitude;
+        Log.e("TAG IS ANYTHING","YOUR MESSAGE"+API);
+
+        AndroidNetworking.get(API)
                 .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -77,15 +107,14 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
                         try {
                             progressDialog.dismiss();
                             JSONArray playerArray = response.getJSONArray("data");
-                            Log.e("TAG IS ANYTHING","YOUR MESSAGE"+playerArray);
                             for (int i = 0; i < playerArray.length(); i++) {
                                 JSONObject temp = playerArray.getJSONObject(i);
                                 ModelWisata dataApi = new ModelWisata();
 
                                 dataApi.setIdWisata(temp.getString("id"));
-                                dataApi.setTxtNamaWisata(temp.getString("nama"));
+                                dataApi.setTxtNamaWisata(temp.getString("name"));
                                 dataApi.setGambarWisata(Api.BaseUrl + temp.getString("thumbnail"));
-                                Log.e("TAG IS ANYTHING","YOUR MESSAGE"+Api.BaseUrl + temp.getString("thumbnail"));
+
                                 dataApi.setKategoriWisata("random dulu");
 
                                 modelWisata.add(dataApi);
@@ -127,4 +156,20 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
         }
         return super.onOptionsItemSelected(item);
     }
+
+    // Register the permissions callback, which handles the user's response to the
+    // system permissions dialog. Save the return value, an instance of
+    // ActivityResultLauncher, as an instance variable.
+    private ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    getWisata();
+                } else {
+                    // Explain to the user that the feature is unavailable because the
+                    // features requires a permission that the user has denied. At the
+                    // same time, respect the user's decision. Don't link to system
+                    // settings in an effort to convince the user to change their
+                    // decision.
+                }
+            });
 }
