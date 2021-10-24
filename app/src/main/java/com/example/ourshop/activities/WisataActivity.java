@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,6 +48,8 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
     ProgressDialog progressDialog;
     List<ModelWisata> modelWisata = new ArrayList<>();
     Toolbar tbWisata;
+    double longitude;
+    double latitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +76,9 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
         rvWisata.setHasFixedSize(true);
 
         if (
-            ContextCompat.checkSelfPermission(
-            this, Manifest.permission.ACCESS_COARSE_LOCATION) ==
-            PackageManager.PERMISSION_GRANTED
+                ContextCompat.checkSelfPermission(
+                        this, Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                        PackageManager.PERMISSION_GRANTED
         ) {
             getWisata();
         } else {
@@ -92,9 +95,12 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
 
         // You can use the API that requires the permission.
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        double longitude = location.getLongitude();
-        double latitude = location.getLatitude();
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            finish();
+        }
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
+
         API = Api.Wisata + "?" + "longitude="+ longitude + "&" + "latitude" + latitude;
         Log.e("TAG IS ANYTHING","YOUR MESSAGE"+API);
 
@@ -135,6 +141,13 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
                     }
                 });
     }
+
+    private final LocationListener locationListener = new LocationListener() {
+        public void onLocationChanged(Location location) {
+            longitude = location.getLongitude();
+            latitude = location.getLatitude();
+        }
+    };
 
     private void showWisata() {
         kulinerAdapter = new WisataAdapter(WisataActivity.this, modelWisata, this);
