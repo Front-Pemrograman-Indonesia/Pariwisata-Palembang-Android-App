@@ -2,9 +2,11 @@ package com.example.ourshop.activities;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateFormat;
@@ -17,12 +19,14 @@ import android.widget.TextView;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ourshop.R;
 import com.example.ourshop.adapter.MainAdapter;
+import com.example.ourshop.api.Api;
 import com.example.ourshop.decoration.LayoutMarginDecoration;
 import com.example.ourshop.model.ModelMain;
 import com.example.ourshop.utils.Tools;
@@ -55,8 +59,17 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textViewDate = findViewById(R.id.tvDate);
         textViewDate.setText(currentDate);
-    }
 
+        // Check for user's permit on Location
+        if (
+                ContextCompat.checkSelfPermission(
+                        this, Manifest.permission.ACCESS_COARSE_LOCATION) !=
+                        PackageManager.PERMISSION_GRANTED
+        ) {
+            // if the location permit did not granted yet, the app will ask for it
+            requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION);
+        }
+    }
 
     public void wisataActivity(View view) {
         startActivity(new Intent(MainActivity.this, WisataActivity.class));
@@ -87,14 +100,9 @@ public class MainActivity extends AppCompatActivity {
     private ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if (isGranted) {
-                    // Permission is granted. Continue the action or workflow in your
-                    // app.
+
                 } else {
-                    // Explain to the user that the feature is unavailable because the
-                    // features requires a permission that the user has denied. At the
-                    // same time, respect the user's decision. Don't link to system
-                    // settings in an effort to convince the user to change their
-                    // decision.
+
                 }
             });
 }

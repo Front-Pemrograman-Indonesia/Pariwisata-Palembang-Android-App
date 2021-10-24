@@ -109,10 +109,8 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
                 getWisata();
             }
         } else {
-            Log.e("TAG IS ANYTHING", "YOUR MESSAGE" + "only here");
-            // You can directly ask for the permission.
-            // The registered ActivityResultCallback gets the result of this request.
-            requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION);
+            API = Api.Wisata;
+            getWisata();
         }
     }
 
@@ -188,31 +186,4 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
         }
         return super.onOptionsItemSelected(item);
     }
-
-    // Register the permissions callback, which handles the user's response to the
-    // system permissions dialog. Save the return value, an instance of
-    // ActivityResultLauncher, as an instance variable.
-    private ActivityResultLauncher<String> requestPermissionLauncher =
-            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
-                if (isGranted) {
-                    // You can use the API that requires the permission.
-                    LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-                    if (
-                        ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                        ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                    ) {
-                        finish();
-                    }
-
-                    lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
-
-                    API = Api.Wisata + "?" + "longitude="+ longitude + "&" + "latitude" + latitude;
-
-                    getWisata();
-                } else {
-                    API = Api.Wisata;
-                    getWisata();
-                }
-            });
 }
