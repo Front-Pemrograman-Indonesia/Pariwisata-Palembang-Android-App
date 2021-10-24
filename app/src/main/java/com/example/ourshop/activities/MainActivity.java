@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -59,6 +60,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void wisataActivity(View view) {
         startActivity(new Intent(MainActivity.this, WisataActivity.class));
+    }
+
+    public void HotelActivity(View view) {
+        startActivity(new Intent(MainActivity.this, HotelActivity.class));
+    }
+
+    public void KulinerActivity(View view) {
+        Log.e("TAG IS ANYTHING", "setting the longitude latitude" + "mainnn");
+        startActivity(new Intent(MainActivity.this, KulinerActivity.class));
     }
 
     //set Transparent Status bar

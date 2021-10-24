@@ -3,12 +3,13 @@ package com.example.ourshop.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -16,11 +17,9 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.ourshop.R;
-import com.example.ourshop.adapter.KulinerAdapter;
+import com.example.ourshop.adapter.HotelAdapter;
 import com.example.ourshop.api.Api;
-import com.example.ourshop.decoration.LayoutMarginDecoration;
-import com.example.ourshop.model.ModelKuliner;
-import com.example.ourshop.utils.Tools;
+import com.example.ourshop.model.ModelHotel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,23 +28,22 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KulinerActivity extends AppCompatActivity implements KulinerAdapter.onSelectData {
+public class HotelActivity extends AppCompatActivity implements HotelAdapter.onSelectData {
 
-    RecyclerView rvKuliner;
-    LayoutMarginDecoration gridMargin;
-    KulinerAdapter kulinerAdapter;
+    RecyclerView rvHotel;
+    HotelAdapter hotelAdapter;
     ProgressDialog progressDialog;
-    List<ModelKuliner> modelKuliner = new ArrayList<>();
-    Toolbar tbKuliner;
+    List<ModelHotel> modelHotel = new ArrayList<>();
+    Toolbar tbHotel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kuliner);
+        setContentView(R.layout.activity_hotel);
 
-        tbKuliner = findViewById(R.id.toolbar_kuliner);
-        tbKuliner.setTitle("Daftar Kuliner Palembang");
-        setSupportActionBar(tbKuliner);
+        tbHotel = findViewById(R.id.toolbar_hotel);
+        tbHotel.setTitle("Daftar Hotel Palembang");
+        setSupportActionBar(tbHotel);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -54,20 +52,16 @@ public class KulinerActivity extends AppCompatActivity implements KulinerAdapter
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Sedang menampilkan data...");
 
-        rvKuliner = findViewById(R.id.rvKuliner);
-        GridLayoutManager mLayoutManager = new GridLayoutManager(this,
-                2, RecyclerView.VERTICAL, false);
-        rvKuliner.setLayoutManager(mLayoutManager);
-        gridMargin = new LayoutMarginDecoration(2, Tools.dp2px(this, 4));
-        rvKuliner.addItemDecoration(gridMargin);
-        rvKuliner.setHasFixedSize(true);
+        rvHotel = findViewById(R.id.rvHotel);
+        rvHotel.setHasFixedSize(true);
+        rvHotel.setLayoutManager(new LinearLayoutManager(this));
 
-        getKuliner();
+        getHotel();
     }
 
-    private void getKuliner() {
+    private void getHotel() {
         progressDialog.show();
-        AndroidNetworking.get(Api.Kuliner)
+        AndroidNetworking.get(Api.Hotel)
                 .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -76,22 +70,21 @@ public class KulinerActivity extends AppCompatActivity implements KulinerAdapter
                         try {
                             progressDialog.dismiss();
                             JSONArray playerArray = response.getJSONArray("data");
+                            Log.e("TAG IS ANYTHING", "setting the longitude latitude" + playerArray);
                             for (int i = 0; i < playerArray.length(); i++) {
                                 JSONObject temp = playerArray.getJSONObject(i);
-                                ModelKuliner dataApi = new ModelKuliner();
-                                dataApi.setIdKuliner(temp.getString("id"));
-                                dataApi.setTxtNamaKuliner(temp.getString("name"));
+                                ModelHotel dataApi = new ModelHotel();
+                                dataApi.setTxtNamaHotel(temp.getString("name"));
                                 String coordinate = temp.getString("latitude") + ", " + temp.getString("longitude");
                                 dataApi.setKoordinat(coordinate);
-                                String thumbnail = Api.BaseUrl + temp.getString("thumbnail");
-                                dataApi.setGambarKuliner(thumbnail);
-                                dataApi.setKategoriKuliner("random dlu");
-                                modelKuliner.add(dataApi);
-                                showKuliner();
+                                String thumbnailEndpoint = Api.BaseUrl + temp.getString("thumbnail");
+                                dataApi.setGambarHotel(thumbnailEndpoint);
+                                modelHotel.add(dataApi);
+                                showHotel();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(KulinerActivity.this,
+                            Toast.makeText(HotelActivity.this,
                                     "Gagal menampilkan data!", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -99,21 +92,21 @@ public class KulinerActivity extends AppCompatActivity implements KulinerAdapter
                     @Override
                     public void onError(ANError anError) {
                         progressDialog.dismiss();
-                        Toast.makeText(KulinerActivity.this,
+                        Toast.makeText(HotelActivity.this,
                                 "Tidak ada jaringan internet!", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    private void showKuliner() {
-        kulinerAdapter = new KulinerAdapter(KulinerActivity.this, modelKuliner, this);
-        rvKuliner.setAdapter(kulinerAdapter);
+    private void showHotel() {
+        hotelAdapter = new HotelAdapter(HotelActivity.this, modelHotel, this);
+        rvHotel.setAdapter(hotelAdapter);
     }
 
     @Override
-    public void onSelected(ModelKuliner modelKuliner) {
-        Intent intent = new Intent(KulinerActivity.this, DetailKulinerActivity.class);
-        intent.putExtra("detailKuliner", modelKuliner);
+    public void onSelected(ModelHotel modelHotel) {
+        Intent intent = new Intent(HotelActivity.this, DetailHotelActivity.class);
+        intent.putExtra("detailHotel", modelHotel);
         startActivity(intent);
     }
 

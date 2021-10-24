@@ -27,13 +27,15 @@
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kuliner" />
+                android:text="Kuliner"
+                android:onClick="KulinerActivity"/>
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hotel" />
+                android:text="Hotel"
+                android:onClick="HotelActivity"/>
 
             <Button
                 android:id="@+id/button4"

@@ -1,12 +1,24 @@
 package com.example.ourshop.api;
 
 public class Api {
-    public static String Hotel = "https://dev.farizdotid.com/api/purwakarta/hotel";
-    public static String Kuliner = "https://dev.farizdotid.com/api/purwakarta/kuliner";
-    public static String DetailKuliner = "https://dev.farizdotid.com/api/purwakarta/kuliner/{id}";
-    public static String TempatIbadah = "https://dev.farizdotid.com/api/purwakarta/tempatibadah";
-    public static String Wisata = "https://fpi-pariwisata-palembang-api.herokuapp.com/wisata";
-    public static String DetailWisata = "https://fpi-pariwisata-palembang-api.herokuapp.com/wisata/{id}";
-
+    // Base API
     public static String BaseUrl = "https://fpi-pariwisata-palembang-api.herokuapp.com";
+
+    // API for Hotel
+    public static String Hotel = BaseUrl + "/penginapan";
+    public static String DetailHotel = BaseUrl + "/kuliner/{id}";
+
+    // API for Kuliner
+    public static String Kuliner = BaseUrl + "/kuliner";
+    public static String DetailKuliner = BaseUrl + "/kuliner/{id}";
+
+    // API for Place of Worships
+    public static String JenisTempatIbadah = BaseUrl + "/tempatibadah";
+    public static String TempatIbadah = BaseUrl + "/tempatibadah/{id}";
+
+    // API for Wisata
+    public static String Wisata = BaseUrl + "/wisata";
+    public static String DetailWisata = BaseUrl + "/wisata/{id}";
+
+
 }

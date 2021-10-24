@@ -13,7 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OurShop">
+
         <activity android:name=".activities.DetailWisataActivity" />
+        <activity android:name=".activities.DetailHotelActivity" />
+        <activity android:name=".activities.DetailKulinerActivity" />
+
         <activity
             android:name=".activities.SplashScreen"
             android:exported="true">
@@ -23,15 +27,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".activities.WisataActivity"
             android:parentActivityName=".activities.MainActivity">
         </activity>
+
+        <activity android:name=".activities.HotelActivity"
+            android:parentActivityName=".activities.MainActivity">
+        </activity>
+
         <activity android:name=".activities.KulinerActivity"
             android:parentActivityName=".activities.MainActivity">
         </activity>
+
         <activity
             android:name=".activities.MainActivity"
             android:exported="true" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
 
     </application>
 

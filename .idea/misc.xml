@@ -8,9 +8,12 @@
         <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/drawable-v24/ic_launcher_background.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/drawable/bg_circle_radius_primary.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/drawable/ic_circle_white.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/layout/activity_detail_hotel.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/layout/activity_detail_kuliner.xml" value="0.2015625" />
         <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/layout/activity_detail_penginapan.xml" value="0.22" />
         <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/layout/activity_detail_wisata.xml" value="0.2015625" />
+        <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/layout/activity_hotel.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/layout/activity_kuliner.xml" value="0.2015625" />
         <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/layout/activity_penginapan.xml" value="0.2015625" />
@@ -21,6 +24,7 @@
         <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/layout/android_3.xml" value="0.2015625" />
         <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/layout/header_main.xml" value="0.2015625" />
         <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/layout/item_grid_main.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/layout/item_list_hotel.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/Labkom.DESKTOP-BLFMIN6/StudioProjects/Our-Shop/app/src/main/res/layout/item_list_wisata.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/alfar/AndroidStudioProjects/Our-Shop/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Users/alfar/AndroidStudioProjects/Our-Shop/app/src/main/res/layout/android_2.xml" value="0.1" />
