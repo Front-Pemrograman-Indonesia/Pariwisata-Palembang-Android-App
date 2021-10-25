@@ -28,7 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HotelActivity extends AppCompatActivity implements HotelAdapter.onSelectData {
+public class PrayPlaceActivity extends AppCompatActivity implements HotelAdapter.onSelectData {
 
     RecyclerView rvHotel;
     HotelAdapter hotelAdapter;
@@ -42,7 +42,7 @@ public class HotelActivity extends AppCompatActivity implements HotelAdapter.onS
         setContentView(R.layout.activity_hotel);
 
         tbHotel = findViewById(R.id.toolbar_hotel);
-        tbHotel.setTitle("Daftar Hotel Palembang");
+        tbHotel.setTitle("Daftar Tempat Ibadah");
         setSupportActionBar(tbHotel);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,7 +61,7 @@ public class HotelActivity extends AppCompatActivity implements HotelAdapter.onS
 
     private void getHotel() {
         progressDialog.show();
-        AndroidNetworking.get(Api.Hotel)
+        AndroidNetworking.get(Api.JenisTempatIbadah)
                 .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -70,13 +70,15 @@ public class HotelActivity extends AppCompatActivity implements HotelAdapter.onS
                         try {
                             progressDialog.dismiss();
                             JSONArray playerArray = response.getJSONArray("data");
+                            Log.e("TAG IS ANYTHING", "setting the longitude latitude" + playerArray);
                             for (int i = 0; i < playerArray.length(); i++) {
                                 JSONObject temp = playerArray.getJSONObject(i);
                                 ModelHotel dataApi = new ModelHotel();
 
-                                String coordinate = temp.getString("latitude") + ", " + temp.getString("longitude");
+                                String coordinate = "0.0000" + ", " + "0.0000";
                                 String thumbnailEndpoint = Api.BaseUrl + temp.getString("thumbnail");
 
+                                dataApi.set_id(temp.getString("id"));
                                 dataApi.setTxtNamaHotel(temp.getString("name"));
                                 dataApi.setKoordinat(coordinate);
                                 dataApi.setGambarHotel(thumbnailEndpoint);
@@ -86,7 +88,7 @@ public class HotelActivity extends AppCompatActivity implements HotelAdapter.onS
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(HotelActivity.this,
+                            Toast.makeText(PrayPlaceActivity.this,
                                     "Gagal menampilkan data!", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -94,20 +96,20 @@ public class HotelActivity extends AppCompatActivity implements HotelAdapter.onS
                     @Override
                     public void onError(ANError anError) {
                         progressDialog.dismiss();
-                        Toast.makeText(HotelActivity.this,
+                        Toast.makeText(PrayPlaceActivity.this,
                                 "Tidak ada jaringan internet!", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
     private void showHotel() {
-        hotelAdapter = new HotelAdapter(HotelActivity.this, modelHotel, this);
+        hotelAdapter = new HotelAdapter(PrayPlaceActivity.this, modelHotel, this);
         rvHotel.setAdapter(hotelAdapter);
     }
 
     @Override
     public void onSelected(ModelHotel modelHotel) {
-        Intent intent = new Intent(HotelActivity.this, DetailHotelActivity.class);
+        Intent intent = new Intent(PrayPlaceActivity.this, DetailPrayPlaceActivity.class);
         intent.putExtra("detailHotel", modelHotel);
         startActivity(intent);
     }

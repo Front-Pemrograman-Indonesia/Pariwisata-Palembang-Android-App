@@ -8,7 +8,15 @@ import java.io.Serializable;
 
 public class ModelHotel implements Serializable {
 
-    private String txtNamaHotel, txtAlamatHotel, txtNoTelp, Koordinat, GambarHotel;
+    private String _id, txtNamaHotel, txtAlamatHotel, txtNoTelp, Koordinat, GambarHotel;
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public String get_id() {
+        return _id;
+    }
 
     public String getTxtNamaHotel() {
         return txtNamaHotel;

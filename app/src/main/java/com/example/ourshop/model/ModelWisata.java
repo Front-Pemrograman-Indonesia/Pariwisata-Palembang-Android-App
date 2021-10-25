@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public class ModelWisata implements Serializable {
 
-    private String idWisata, txtNamaWisata, GambarWisata, KategoriWisata;
+    private String idWisata, txtJarakWisata, txtNamaWisata, GambarWisata, KategoriWisata;
 
     public String getIdWisata() {
         return idWisata;
@@ -16,6 +16,14 @@ public class ModelWisata implements Serializable {
 
     public void setIdWisata(String idWisata) {
         this.idWisata = idWisata;
+    }
+
+    public String getJarakWisata() {
+        return txtJarakWisata;
+    }
+
+    public void setJarakWisata(String txtJarakWisata) {
+        this.txtJarakWisata = txtJarakWisata;
     }
 
     public String getTxtNamaWisata() {

@@ -17,6 +17,7 @@
         <activity android:name=".activities.DetailWisataActivity" />
         <activity android:name=".activities.DetailHotelActivity" />
         <activity android:name=".activities.DetailKulinerActivity" />
+        <activity android:name=".activities.DetailPrayPlaceActivity" />
 
         <activity
             android:name=".activities.SplashScreen"
@@ -37,6 +38,10 @@
         </activity>
 
         <activity android:name=".activities.KulinerActivity"
+            android:parentActivityName=".activities.MainActivity">
+        </activity>
+
+        <activity android:name=".activities.PrayPlaceActivity"
             android:parentActivityName=".activities.MainActivity">
         </activity>
 

@@ -84,6 +84,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, KulinerActivity.class));
     }
 
+    public void PrayPlaceActivity(View view) {
+        Log.e("TAG IS ANYTHING", "setting the longitude latitude" + "mainnn");
+        startActivity(new Intent(MainActivity.this, PrayPlaceActivity.class));
+    }
+
     //set Transparent Status bar
     public static void setWindowFlag(Activity activity, final int bits, boolean on) {
 

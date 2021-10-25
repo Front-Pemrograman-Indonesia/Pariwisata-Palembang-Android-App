@@ -1,25 +1,24 @@
 package com.example.ourshop.activities;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.ourshop.R;
-import com.example.ourshop.adapter.HotelAdapter;
+import com.example.ourshop.adapter.PrayPlaceAdapter;
 import com.example.ourshop.api.Api;
 import com.example.ourshop.model.ModelHotel;
+import com.example.ourshop.model.ModelPrayPlace;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,40 +27,49 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HotelActivity extends AppCompatActivity implements HotelAdapter.onSelectData {
+public class DetailPrayPlaceActivity extends AppCompatActivity {
 
-    RecyclerView rvHotel;
-    HotelAdapter hotelAdapter;
+    RecyclerView rvPrayPlace;
+    PrayPlaceAdapter prayPlaceAdapter;
     ProgressDialog progressDialog;
-    List<ModelHotel> modelHotel = new ArrayList<>();
-    Toolbar tbHotel;
+    List<ModelPrayPlace> modelPrayPlace = new ArrayList<>();
+    ModelHotel modelHotel;
+    Toolbar tbPlace;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hotel);
+        setContentView(R.layout.activity_pray_place);
 
-        tbHotel = findViewById(R.id.toolbar_hotel);
-        tbHotel.setTitle("Daftar Hotel Palembang");
-        setSupportActionBar(tbHotel);
+        tbPlace = findViewById(R.id.toolbar_place);
+        tbPlace.setTitle("Daftar Tempat Ibadah");
+        setSupportActionBar(tbPlace);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Mohon Tunggu");
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("Sedang menampilkan data...");
+        progressDialog.setMessage("Sedang menampilkan data");
 
-        rvHotel = findViewById(R.id.rvHotel);
-        rvHotel.setHasFixedSize(true);
-        rvHotel.setLayoutManager(new LinearLayoutManager(this));
+        rvPrayPlace = findViewById(R.id.rvPrayPlace);
+        rvPrayPlace.setHasFixedSize(true);
+        rvPrayPlace.setLayoutManager(new LinearLayoutManager(this));
 
-        getHotel();
+        modelHotel = (ModelHotel) getIntent().getSerializableExtra("detailHotel");
+        if (modelHotel != null) {
+            //get String
+            id = modelHotel.get_id();
+        }
+
+        getPrayPlace();
     }
 
-    private void getHotel() {
+    private void getPrayPlace() {
         progressDialog.show();
-        AndroidNetworking.get(Api.Hotel)
+        AndroidNetworking.get(Api.TempatIbadah)
+                .addPathParameter("id", id)
                 .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -72,21 +80,16 @@ public class HotelActivity extends AppCompatActivity implements HotelAdapter.onS
                             JSONArray playerArray = response.getJSONArray("data");
                             for (int i = 0; i < playerArray.length(); i++) {
                                 JSONObject temp = playerArray.getJSONObject(i);
-                                ModelHotel dataApi = new ModelHotel();
-
-                                String coordinate = temp.getString("latitude") + ", " + temp.getString("longitude");
-                                String thumbnailEndpoint = Api.BaseUrl + temp.getString("thumbnail");
-
-                                dataApi.setTxtNamaHotel(temp.getString("name"));
-                                dataApi.setKoordinat(coordinate);
-                                dataApi.setGambarHotel(thumbnailEndpoint);
-
-                                modelHotel.add(dataApi);
-                                showHotel();
+                                ModelPrayPlace dataApi = new ModelPrayPlace();
+                                dataApi.setTxtTempatIbadah(temp.getString("name"));
+                                dataApi.setLatitude(temp.getDouble("latitude"));
+                                dataApi.setLongitude(temp.getDouble("longitude"));
+                                modelPrayPlace.add(dataApi);
+                                showPrayPlace();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(HotelActivity.this,
+                            Toast.makeText(DetailPrayPlaceActivity.this,
                                     "Gagal menampilkan data!", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -94,22 +97,15 @@ public class HotelActivity extends AppCompatActivity implements HotelAdapter.onS
                     @Override
                     public void onError(ANError anError) {
                         progressDialog.dismiss();
-                        Toast.makeText(HotelActivity.this,
+                        Toast.makeText(DetailPrayPlaceActivity.this,
                                 "Tidak ada jaringan internet!", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    private void showHotel() {
-        hotelAdapter = new HotelAdapter(HotelActivity.this, modelHotel, this);
-        rvHotel.setAdapter(hotelAdapter);
-    }
-
-    @Override
-    public void onSelected(ModelHotel modelHotel) {
-        Intent intent = new Intent(HotelActivity.this, DetailHotelActivity.class);
-        intent.putExtra("detailHotel", modelHotel);
-        startActivity(intent);
+    private void showPrayPlace() {
+        prayPlaceAdapter = new PrayPlaceAdapter(modelPrayPlace);
+        rvPrayPlace.setAdapter(prayPlaceAdapter);
     }
 
     @Override

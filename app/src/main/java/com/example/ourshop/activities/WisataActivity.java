@@ -44,7 +44,7 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
 
     RecyclerView rvWisata;
     LayoutMarginDecoration gridMargin;
-    WisataAdapter kulinerAdapter;
+    WisataAdapter wisataAdapter;
     ProgressDialog progressDialog;
     List<ModelWisata> modelWisata = new ArrayList<>();
     Toolbar tbWisata;
@@ -56,7 +56,7 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wisata);
-
+        Log.e("TAG IS ANYTHING", "Final AP1I" + API);
         tbWisata = findViewById(R.id.toolbar_wisata);
         tbWisata.setTitle("Daftar Wisata Palembang");
         setSupportActionBar(tbWisata);
@@ -75,40 +75,65 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
         gridMargin = new LayoutMarginDecoration(2, Tools.dp2px(this, 4));
         rvWisata.addItemDecoration(gridMargin);
         rvWisata.setHasFixedSize(true);
+        Log.e("TAG IS ANYTHING", "Final API2" + API);
 
+        // Check for user's permit on Location
         if (
-                ContextCompat.checkSelfPermission(
-                        this, Manifest.permission.ACCESS_COARSE_LOCATION) ==
-                        PackageManager.PERMISSION_GRANTED
+            ContextCompat.checkSelfPermission(
+                this, Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
         ) {
+            Log.e("TAG IS ANYTHING", "Final API3" + API);
             // You can use the API that requires the permission.
-            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
+            // Initializing the location manager
+            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            Log.e("TAG IS ANYTHING", "LM" + lm);
+
+            // Checking if the GPS and network are enabled
             boolean gps_enabled = false;
             boolean network_enabled = false;
-
+            Log.e("TAG IS ANYTHING", "Final API4" + API);
             try {
                 gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+                Log.e("TAG IS ANYTHING", "GPS" + gps_enabled);
             } catch(Exception ex) {}
 
             try {
                 network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+                Log.e("TAG IS ANYTHING", "Network" + network_enabled);
             } catch(Exception ex) {}
 
+            // CHECKING IF THE GPS OR NETWORK ENABLED, IF NOT THEN USE API THAT DID NOT NEED LATLONG
             if(gps_enabled && network_enabled) {
                 if (
-                        ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                    ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 ) {
                     finish();
                 }
 
-                lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
+                // GET THE LAST KNOWN LOCATION OF YOUR DEVICE
+                Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                if(location == null) {
+                    Log.e("TAG IS ANYTHING", "last known null");
+                    // IF LAST KNOWN LOCATION IS NULL, GET RECENT LOCATION
+                    lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 10, locationListener);
+                } else {
+                    Log.e("TAG IS ANYTHING", "last known is not null");
+                    longitude = location.getLongitude();
+                    latitude = location.getLatitude();
+                    API = Api.Wisata + "?" + "longitude=" + longitude + "&" + "latitude" + latitude;
+
+                    getWisata();
+                }
             } else {
                 API = Api.Wisata;
                 getWisata();
             }
         } else {
+            // User did not grant permit to acces the location
+            // Use the API that did not need any permit from the user (without latitude and longitude)
             API = Api.Wisata;
             getWisata();
         }
@@ -133,6 +158,11 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
                                 dataApi.setIdWisata(temp.getString("id"));
                                 dataApi.setTxtNamaWisata(temp.getString("name"));
                                 dataApi.setGambarWisata(Api.BaseUrl + temp.getString("thumbnail"));
+                                if(temp.getBoolean("locationStatus")){
+                                    dataApi.setJarakWisata("jarak anda ke tempat wisata: " + temp.getString("distance") + " km");
+                                } else {
+                                    dataApi.setJarakWisata("Izinkan dan hidupkan lokasi untuk dapat mengetahui jarak ke tempat wisata");
+                                }
 
                                 dataApi.setKategoriWisata("random dulu");
 
@@ -167,8 +197,8 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
     };
 
     private void showWisata() {
-        kulinerAdapter = new WisataAdapter(WisataActivity.this, modelWisata, this);
-        rvWisata.setAdapter(kulinerAdapter);
+        wisataAdapter = new WisataAdapter(WisataActivity.this, modelWisata, this);
+        rvWisata.setAdapter(wisataAdapter);
     }
 
     @Override

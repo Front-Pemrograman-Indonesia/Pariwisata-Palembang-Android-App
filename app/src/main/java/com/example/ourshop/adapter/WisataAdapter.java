@@ -55,6 +55,7 @@ public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder
 
         holder.tvKategori.setText(data.getKategoriWisata());
         holder.tvWisata.setText(data.getTxtNamaWisata());
+        holder.tvJarakWisata.setText(data.getJarakWisata());
         holder.cvWisata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +74,7 @@ public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder
 
         public TextView tvKategori;
         public TextView tvWisata;
+        public TextView tvJarakWisata;
         public CardView cvWisata;
         public ImageView imgWisata;
 
@@ -80,6 +82,7 @@ public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder
             super(itemView);
             cvWisata = itemView.findViewById(R.id.cvWisata);
             tvWisata = itemView.findViewById(R.id.tvWisata);
+            tvJarakWisata = itemView.findViewById(R.id.tvJarakWisata);
             tvKategori = itemView.findViewById(R.id.tvKategori);
             imgWisata = itemView.findViewById(R.id.imgWisata);
         }
