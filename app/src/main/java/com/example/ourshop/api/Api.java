@@ -1,15 +1,24 @@
 package com.example.ourshop.api;
 
 public class Api {
-    public static String wisata = "https://fpi-pariwisata-palembang-api.herokuapp.com/wisata";
-    public static String detailWisata = "https://fpi-pariwisata-palembang-api.herokuapp.com/wisata/{id}";
+    // Base API
+    public static String BaseUrl = "https://fpi-pariwisata-palembang-api.herokuapp.com";
 
-    public static String kuliner = "https://fpi-pariwisata-palembang-api.herokuapp.com/kuliner";
-    public static String detailKuliner = "https://fpi-pariwisata-palembang-api.herokuapp.com/kuliner/{id}";
+    // API for Hotel
+    public static String Hotel = BaseUrl + "/penginapan";
+    public static String DetailHotel = BaseUrl + "/kuliner/{id}";
 
-    public static String penginapan = "https://fpi-pariwisata-palembang-api.herokuapp.com/penginapan";
-    public static String detailPenginapan = "https://fpi-pariwisata-palembang-api.herokuapp.com/penginapan/{id}";
+    // API for Kuliner
+    public static String Kuliner = BaseUrl + "/kuliner";
+    public static String DetailKuliner = BaseUrl + "/kuliner/{id}";
 
-    public static String tempatIbadah = "https://fpi-pariwisata-palembang-api.herokuapp.com/tempatibadah";
-    public static String detailTempatIbadah = "https://fpi-pariwisata-palembang-api.herokuapp.com/tempatibadah/{id}";
+    // API for Place of Worships
+    public static String JenisTempatIbadah = BaseUrl + "/tempatibadah";
+    public static String TempatIbadah = BaseUrl + "/tempatibadah/{id}";
+
+    // API for Wisata
+    public static String Wisata = BaseUrl + "/wisata";
+    public static String DetailWisata = BaseUrl + "/wisata/{id}";
+
+
 }

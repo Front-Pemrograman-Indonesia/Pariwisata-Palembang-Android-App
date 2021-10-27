@@ -20,40 +20,29 @@
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Wisata" />
+                android:text="Wisata"
+                android:onClick="wisataActivity"/>
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kuliner" />
+                android:text="Kuliner"
+                android:onClick="KulinerActivity"/>
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hotel" />
+                android:text="Hotel"
+                android:onClick="HotelActivity"/>
 
             <Button
                 android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rumah Ibadah" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvMainMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp" />
-
-            </RelativeLayout>
+                android:text="Rumah Ibadah"
+                android:onClick="PrayPlaceActivity"/>
 
         </LinearLayout>
 
