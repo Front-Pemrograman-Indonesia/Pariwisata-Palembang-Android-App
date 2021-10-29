@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -31,16 +33,50 @@ import com.example.ourshop.decoration.LayoutMarginDecoration;
 import com.example.ourshop.model.ModelMain;
 import com.example.ourshop.utils.Tools;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    TextView textView;
+    Geocoder geocoder;
+    List<Address> addresses;
+
+    Double latitude = -0.789275;
+    Double longtitude = 113.921327;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        textView = (TextView) findViewById(R.id.user_location);
+
+        geocoder = new Geocoder(this, Locale.getDefault());
+
+        try {
+            addresses = geocoder.getFromLocation(latitude, longtitude, 1);
+
+            String address = addresses.get(0).getAddressLine(0);
+            String area = addresses.get(0).getLocality();
+            String city = addresses.get(0).getAdminArea();
+            String country = addresses.get(0).getCountryName();
+            String postalcode = addresses.get(0).getPostalCode();
+
+            String fullAddress = area+", "+city;
+
+            textView.setText(fullAddress);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility
