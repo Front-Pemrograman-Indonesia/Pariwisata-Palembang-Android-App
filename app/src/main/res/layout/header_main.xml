@@ -30,8 +30,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="50dp"
+                    android:layout_height="155dp"
+                    android:layout_marginTop="40dp"
                     app:cardCornerRadius="5dp"
                     app:cardUseCompatPadding="true">
 
@@ -42,29 +42,31 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
-                            android:padding="10dp">
+                            android:padding="14dp">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="130dp"
-                                android:singleLine="true"
-                                android:text="Welcome Adventure"
-                                android:textColor="@android:color/black"
-                                android:textSize="16sp"
-                                android:textStyle="bold"/>
+                                android:text="FPI Travel"
+                                android:textColor="#FF000000"
+                                android:textSize="29dp"
+                                android:textStyle="bold" />
 
                         </LinearLayout>
 
                         <LinearLayout
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
-                            android:padding="10dp">
+                            android:padding="5dp">
+
 
                             <TextView
                                 android:id="@+id/tvDate"
@@ -74,10 +76,30 @@
                                 android:drawablePadding="10dp"
                                 android:gravity="center"
                                 android:textColor="@android:color/black"
-                                android:textSize="12sp"
+                                android:textSize="15sp"
                                 app:drawableTint="#03A9F4"
                                 app:drawableStartCompat="@android:drawable/ic_menu_today" />
 
+                        </LinearLayout>
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:id="@+id/user_location"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="17dp"
+                                android:drawablePadding="18dp"
+                                android:gravity="center"
+                                android:textColor="@android:color/black"
+                                android:textSize="12sp"
+                                android:drawableStart="@drawable/icon_lokasi"/>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -85,16 +107,6 @@
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
-
-            <androidx.cardview.widget.CardView
-
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="5dp">
-
-
-            </androidx.cardview.widget.CardView>
 
         </FrameLayout>
 
