@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void wisataActivity(View view) {
+    public void WisataActivity(View view) {
         startActivity(new Intent(MainActivity.this, WisataActivity.class));
     }
 
