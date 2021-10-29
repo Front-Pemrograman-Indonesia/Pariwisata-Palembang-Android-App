@@ -52,9 +52,9 @@
                                 android:layout_gravity="center"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="FPI Travel"
+                                android:text="Pariwisata Palembang"
                                 android:textColor="#FF000000"
-                                android:textSize="29dp"
+                                android:textSize="26dp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
