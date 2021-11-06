@@ -65,7 +65,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/white"
+                    android:background="@color/gray"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -101,7 +101,7 @@
                                 android:background="@drawable/bg_circle_radius_primary"
                                 android:padding="10dp"
                                 android:src="@drawable/ic_dtl_kuliner"
-                                android:tint="@android:color/white" />
+                                app:tint="@android:color/white" />
 
                             <TextView
                                 android:id="@+id/tvNamaKuliner"
@@ -127,7 +127,7 @@
                                 android:background="@drawable/bg_circle_radius_primary"
                                 android:padding="10dp"
                                 android:src="@drawable/ic_dtl_loc"
-                                android:tint="@android:color/white" />
+                                app:tint="@android:color/white" />
 
                             <TextView
                                 android:id="@+id/tvAddressKuliner"
@@ -153,7 +153,7 @@
                                 android:background="@drawable/bg_circle_radius_primary"
                                 android:padding="10dp"
                                 android:src="@drawable/ic_dtl_time"
-                                android:tint="@android:color/white" />
+                                app:tint="@android:color/white" />
 
                             <TextView
                                 android:id="@+id/tvOpenTime"
@@ -179,7 +179,7 @@
                                 android:background="@drawable/bg_circle_radius_primary"
                                 android:padding="10dp"
                                 android:src="@drawable/ic_dtl_phone"
-                                android:tint="@android:color/white" />
+                                app:tint="@android:color/white" />
 
                             <TextView
                                 android:id="@+id/tvPhoneKuliner"
