@@ -163,9 +163,6 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
                                 } else {
                                     dataApi.setJarakWisata("Izinkan dan hidupkan lokasi untuk dapat mengetahui jarak ke tempat wisata");
                                 }
-
-                                dataApi.setKategoriWisata("random dulu");
-
                                 modelWisata.add(dataApi);
                                 showWisata();
                             }
