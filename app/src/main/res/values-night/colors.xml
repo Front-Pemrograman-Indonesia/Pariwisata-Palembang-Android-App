@@ -9,11 +9,12 @@
     <color name="gray">#212121</color>
     <color name="white">#000000</color>
     <color name="primaryColor">#3897CA</color>
-    <color name="colorPrimary">#12A598</color>
+    <color name="colorPrimary">#525151</color>
     <color name="colorPrimaryDark">#ff42b549</color>
     <color name="colorAccent">#FBC02D</color>
     <color name="orange">#FF9800</color>
     <color name="mera">#F81C1C</color>
     <color name="darker_gray">#FFFFFFFF</color>
     <color name="background_dark_gray">#525151</color>
+    <color name="textColor">#FFFFFFFF</color>
 </resources>
