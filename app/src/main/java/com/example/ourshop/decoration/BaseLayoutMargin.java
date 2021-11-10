@@ -10,10 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Px;
 import androidx.recyclerview.widget.RecyclerView;
 
-/**
- * Created by Azhar Rivaldi on 06/04/2020.
- */
-
 abstract class BaseLayoutMargin extends RecyclerView.ItemDecoration {
 
     private final MarginDelegate marginDelegate;
