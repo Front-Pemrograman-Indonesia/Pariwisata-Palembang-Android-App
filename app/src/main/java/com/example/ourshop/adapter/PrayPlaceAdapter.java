@@ -25,10 +25,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.HashSet;
 import java.util.List;
 
-/**
- * Created by Azhar Rivaldi on 22-12-2019.
- */
-
 public class PrayPlaceAdapter extends RecyclerView.Adapter<PrayPlaceAdapter.ViewHolder> {
 
     private List<ModelPrayPlace> items;
