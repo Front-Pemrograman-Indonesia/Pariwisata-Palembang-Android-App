@@ -2,10 +2,6 @@ package com.example.ourshop.model;
 
 import java.io.Serializable;
 
-/**
- * Created by Azhar Rivaldi on 22-12-2019.
- */
-
 public class ModelHotel implements Serializable {
 
     private String _id, txtNamaHotel, txtAlamatHotel, txtNoTelp, Koordinat, GambarHotel;

@@ -17,10 +17,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
-/**
- * Created by Azhar Rivaldi on 22-12-2019.
- */
-
 public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder> {
 
     private List<ModelWisata> items;
@@ -53,7 +49,6 @@ public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imgWisata);
 
-        holder.tvKategori.setText(data.getKategoriWisata());
         holder.tvWisata.setText(data.getTxtNamaWisata());
         holder.tvJarakWisata.setText(data.getJarakWisata());
         holder.cvWisata.setOnClickListener(new View.OnClickListener() {
