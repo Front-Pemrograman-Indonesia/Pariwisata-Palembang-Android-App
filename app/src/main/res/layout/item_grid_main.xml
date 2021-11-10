@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/gray">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvMainData"
@@ -11,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         app:cardCornerRadius="5dp"
-        app:cardElevation="3dp">
+        app:cardElevation="3dp"
+        android:background="@color/background_darker_gray">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -35,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/imgMainData"
                 android:layout_margin="8dp"
-                android:textColor="@android:color/black"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
             <ImageView
@@ -45,7 +47,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_margin="5dp"
                 android:src="@drawable/ic_arrow"
-                android:tint="@color/colorPrimary" />
+                app:tint="@color/panah_colorPrimary" />
 
         </RelativeLayout>
 

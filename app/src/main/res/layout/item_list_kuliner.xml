@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     app:cardCornerRadius="5dp"
-    app:cardElevation="3dp">
+    app:cardElevation="3dp"
+    android:background="@color/gray">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -28,7 +29,7 @@
             android:layout_marginBottom="2dp"
             android:padding="5dp"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-            android:textColor="@android:color/white"
+            android:textColor="@color/permanen_white"
             android:textSize="12sp" />
 
     </LinearLayout>
