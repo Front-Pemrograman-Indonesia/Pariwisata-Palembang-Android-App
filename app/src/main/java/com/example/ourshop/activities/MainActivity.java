@@ -1,6 +1,7 @@
 package com.example.ourshop.activities;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -47,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
     Geocoder geocoder;
     List<Address> addresses;
 
-    Double latitude = -0.789275;
-    Double longtitude = 113.921327;
+    public Double latitude;
+    public Double longitude;
 
 
     @Override
@@ -58,25 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.user_location);
 
-        geocoder = new Geocoder(this, Locale.getDefault());
-
-        try {
-            addresses = geocoder.getFromLocation(latitude, longtitude, 1);
-
-            String address = addresses.get(0).getAddressLine(0);
-            String area = addresses.get(0).getLocality();
-            String city = addresses.get(0).getAdminArea();
-            String country = addresses.get(0).getCountryName();
-            String postalcode = addresses.get(0).getPostalCode();
-
-            String fullAddress = area+", "+city;
-
-            textView.setText(fullAddress);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        checkUserLocationPermit();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility
@@ -117,13 +102,89 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void KulinerActivity(View view) {
-        Log.e("TAG IS ANYTHING", "setting the longitude latitude" + "mainnn");
         startActivity(new Intent(MainActivity.this, KulinerActivity.class));
     }
 
     public void PrayPlaceActivity(View view) {
-        Log.e("TAG IS ANYTHING", "setting the longitude latitude" + "mainnn");
         startActivity(new Intent(MainActivity.this, PrayPlaceActivity.class));
+    }
+
+    // check the user location permit
+    public void checkUserLocationPermit() {
+        // Check for user's permit on Location
+        if (
+                ContextCompat.checkSelfPermission(
+                        this, Manifest.permission.ACCESS_COARSE_LOCATION
+                ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            // You can use the API that requires the permission.
+
+            // Initializing the location manager
+            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+            // Checking if the GPS and network are enabled
+            boolean gps_enabled = false;
+            boolean network_enabled = false;
+            try {
+                gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+            } catch(Exception ex) {}
+
+            try {
+                network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+            } catch(Exception ex) {}
+
+            // CHECKING IF THE GPS OR NETWORK ENABLED, IF NOT THEN USE API THAT DID NOT NEED LATLONG
+            if(gps_enabled && network_enabled) {
+                if (
+                        ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    finish();
+                }
+
+                // GET THE LAST KNOWN LOCATION OF YOUR DEVICE
+                Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                if(location == null) {
+                    // IF LAST KNOWN LOCATION IS NULL, GET RECENT LOCATION
+                    lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 10, locationListener);
+                } else {
+                    longitude = location.getLongitude();
+                    latitude = location.getLatitude();
+
+                    getUserLocation();
+                }
+            } else {
+                textView.setText("hidupkan lokasi untuk dapat mengetahui lokasi anda sekarang");
+            }
+        } else {
+            // User did not grant permit to acces the location
+            // Use the API that did not need any permit from the user (without latitude and longitude)
+            textView.setText("izinkan pendeteksian lokasi untuk dapat mengetahui lokasi anda sekarang");
+        }
+    }
+
+    private final LocationListener locationListener = new LocationListener() {
+        public void onLocationChanged(Location location) {
+            longitude = location.getLongitude();
+            latitude = location.getLatitude();
+
+            getUserLocation();
+        }
+    };
+
+    // get the user location
+    public void getUserLocation() {
+        geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            Address address = addresses.get(0);
+            String street = address.getThoroughfare() == null? "unnamed road": address.getThoroughfare();
+            String village = address.getFeatureName();
+            String subDistrict = address.getLocality();
+            textView.setText(street  + ", " + village + ", " + subDistrict);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //set Transparent Status bar
@@ -139,10 +200,47 @@ public class MainActivity extends AppCompatActivity {
         win.setAttributes(winParams);
     }
 
+    @SuppressLint("MissingPermission")
     private ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if (isGranted) {
+                    // Initializing the location manager
+                    LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
+                    // Checking if the GPS and network are enabled
+                    boolean gps_enabled = false;
+                    boolean network_enabled = false;
+                    try {
+                        gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+                    } catch(Exception ex) {}
+
+                    try {
+                        network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+                    } catch(Exception ex) {}
+
+                    // CHECKING IF THE GPS OR NETWORK ENABLED, IF NOT THEN USE API THAT DID NOT NEED LATLONG
+                    if(gps_enabled && network_enabled) {
+                        if (
+                                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                                        ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                        ) {
+                            finish();
+                        }
+
+                        // GET THE LAST KNOWN LOCATION OF YOUR DEVICE
+                        @SuppressLint("MissingPermission") Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                        if(location == null) {
+                            // IF LAST KNOWN LOCATION IS NULL, GET RECENT LOCATION
+                            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 10, locationListener);
+                        } else {
+                            longitude = location.getLongitude();
+                            latitude = location.getLatitude();
+
+                            getUserLocation();
+                        }
+                    } else {
+                        textView.setText("hidupkan lokasi untuk dapat mengetahui lokasi anda sekarang");
+                    }
                 } else {
 
                 }
