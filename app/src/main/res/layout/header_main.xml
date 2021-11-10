@@ -53,7 +53,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Pariwisata Palembang"
-                                android:textColor="#FF000000"
+                                android:textColor="@color/black"
                                 android:textSize="26dp"
                                 android:textStyle="bold" />
 
@@ -75,7 +75,7 @@
                                 android:layout_marginStart="10dp"
                                 android:drawablePadding="10dp"
                                 android:gravity="center"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/black"
                                 android:textSize="15sp"
                                 app:drawableTint="#03A9F4"
                                 app:drawableStartCompat="@android:drawable/ic_menu_today" />
@@ -97,7 +97,7 @@
                                 android:layout_marginStart="17dp"
                                 android:drawablePadding="18dp"
                                 android:gravity="center"
-                                android:textColor="@android:color/black"
+                                android:textColor="@color/black"
                                 android:textSize="12sp"
                                 android:drawableStart="@drawable/icon_lokasi"/>
                         </LinearLayout>
