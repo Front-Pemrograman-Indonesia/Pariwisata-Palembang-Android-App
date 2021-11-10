@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Wisata Palembang</string>
     <string name="todo">TODO</string>
+    <string name="splashscreen">splashscreen</string>
 </resources>
