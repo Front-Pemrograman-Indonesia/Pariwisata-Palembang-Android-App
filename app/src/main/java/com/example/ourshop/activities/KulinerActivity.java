@@ -85,7 +85,6 @@ public class KulinerActivity extends AppCompatActivity implements KulinerAdapter
                                 dataApi.setKoordinat(coordinate);
                                 String thumbnail = Api.BaseUrl + temp.getString("thumbnail");
                                 dataApi.setGambarKuliner(thumbnail);
-                                dataApi.setKategoriKuliner("random dlu");
                                 modelKuliner.add(dataApi);
                                 showKuliner();
                             }

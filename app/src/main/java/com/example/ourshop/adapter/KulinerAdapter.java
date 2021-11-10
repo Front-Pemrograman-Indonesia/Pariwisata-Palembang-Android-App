@@ -17,10 +17,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
-/**
- * Created by Azhar Rivaldi on 22-12-2019.
- */
-
 public class KulinerAdapter extends RecyclerView.Adapter<KulinerAdapter.ViewHolder> {
 
     private List<ModelKuliner> items;
@@ -53,7 +49,6 @@ public class KulinerAdapter extends RecyclerView.Adapter<KulinerAdapter.ViewHold
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imgKuliner);
 
-        holder.tvKategori.setText(data.getKategoriKuliner());
         holder.tvKuliner.setText(data.getTxtNamaKuliner());
         holder.cvKuliner.setOnClickListener(new View.OnClickListener() {
             @Override
