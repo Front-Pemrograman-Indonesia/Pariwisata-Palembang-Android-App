@@ -17,11 +17,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -42,11 +45,32 @@ public class MainActivity extends AppCompatActivity {
     public Double latitude;
     public Double longitude;
 
+    public static boolean mIsNightMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // set switch di home
+        SwitchCompat switchCompat = findViewById(R.id.switch_dark_mode);
+        switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mIsNightMode = isChecked;
+                int delayTime = 200;
+                buttonView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (mIsNightMode){
+                            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        } else {
+                            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        }
+                    }
+                }, delayTime);
+            }
+        });
 
         textView = (TextView) findViewById(R.id.user_location);
 
