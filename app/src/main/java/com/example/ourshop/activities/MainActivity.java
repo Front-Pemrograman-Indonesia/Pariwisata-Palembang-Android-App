@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         if (mIsNightMode){
-                            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                         } else {
-                            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                         }
                     }
                 }, delayTime);
