@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Address;
@@ -14,6 +15,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -45,14 +47,31 @@ public class MainActivity extends AppCompatActivity {
     public Double latitude;
     public Double longitude;
 
+    // Key for night mode
+    private final String NIGHT_MODE_KEY = "night_mode";
     public static boolean mIsNightMode = false;
+
+    private SharedPreferences mPreferences;
+    private String sharedPrefFile =
+            "com.example.ourshop.activities";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // set switch night mode di home
+        mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
+
+        // Restore preferences
+        mIsNightMode = mPreferences.getBoolean(NIGHT_MODE_KEY, false);
+        // check if the night mode is on from the preferences
+        if(mIsNightMode) {
+            SwitchCompat switchCompat = findViewById(R.id.switch_dark_mode);
+            switchCompat.setChecked(mIsNightMode);
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+
+        // set switch night mode on home
         SwitchCompat switchCompat = findViewById(R.id.switch_dark_mode);
         switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -62,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
                 buttonView.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+                        preferencesEditor.putBoolean(NIGHT_MODE_KEY, mIsNightMode);
+                        preferencesEditor.apply();
                         if (mIsNightMode){
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                         } else {
@@ -87,19 +109,17 @@ public class MainActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
-        // set tanggal di home
+        // set date on home
         Calendar calendar = Calendar.getInstance();
         String currentDate = java.text.DateFormat.getDateInstance(java.text.DateFormat.FULL).format(calendar.getTime());
-
-        // ini adalah komen yang dibutuhkan
         TextView textViewDate = findViewById(R.id.tvDate);
         textViewDate.setText(currentDate);
 
         // Check for user's permit on Location
         if (
                 ContextCompat.checkSelfPermission(
-                        this, Manifest.permission.ACCESS_COARSE_LOCATION) !=
-                        PackageManager.PERMISSION_GRANTED
+                        this, Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
         ) {
             // if the location permit did not granted yet, the app will ask for it
             requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION);
@@ -254,8 +274,6 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         textView.setText("hidupkan lokasi untuk dapat mengetahui lokasi anda sekarang");
                     }
-                } else {
-
                 }
             });
 }
