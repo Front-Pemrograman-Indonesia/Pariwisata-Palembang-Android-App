@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class ModelWisata implements Serializable {
 
     private String idWisata, txtJarakWisata, txtNamaWisata, GambarWisata, KategoriWisata, KoordinatWisata;
+    private Boolean OpenOrClose;
 
     // Data Wisata
     public String getIdWisata() {
@@ -44,5 +45,13 @@ public class ModelWisata implements Serializable {
     }
     public void setKoordinatWisata(String koordinatWisata) {
         KoordinatWisata = koordinatWisata;
+    }
+
+    // Data Open or Close of the Wisata
+    public Boolean getOpenOrClose() {
+        return OpenOrClose;
+    }
+    public void setOpenOrClose(Boolean openOrClose) {
+        OpenOrClose = openOrClose;
     }
 }
