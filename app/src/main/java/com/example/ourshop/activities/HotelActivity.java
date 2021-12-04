@@ -27,6 +27,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class HotelActivity extends AppCompatActivity implements HotelAdapter.onSelectData {
 
@@ -61,7 +62,8 @@ public class HotelActivity extends AppCompatActivity implements HotelAdapter.onS
 
     private void getHotel() {
         progressDialog.show();
-        AndroidNetworking.get(Api.Hotel)
+        String API = Api.Hotel + "?language=" + Locale.getDefault().getLanguage();
+        AndroidNetworking.get(API)
                 .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
