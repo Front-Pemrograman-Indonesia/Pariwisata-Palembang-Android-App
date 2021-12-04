@@ -61,7 +61,7 @@
                                 android:layout_gravity="center"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Pariwisata Palembang"
+                                android:text= "@string/app_name"
                                 android:textColor="@color/black"
                                 android:textSize="26dp"
                                 android:textStyle="bold" />
