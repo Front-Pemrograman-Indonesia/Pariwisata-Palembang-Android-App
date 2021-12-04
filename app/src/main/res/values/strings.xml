@@ -21,4 +21,7 @@
     <string name="tourist_destination_wait">Please Wait</string>
     <string name="tourist_destination_wait_description">Trying to show the data...</string>
     <string name="tourist_destination_distance">distance: </string>
+
+    // Tourist Destination Details
+    <string name="tourist_destination_details_header">Destination Details</string>
 </resources>
