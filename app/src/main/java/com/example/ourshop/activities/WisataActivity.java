@@ -13,8 +13,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -164,6 +162,7 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
                                 } else {
                                     dataApi.setJarakWisata("Izinkan dan hidupkan lokasi untuk dapat mengetahui jarak ke tempat wisata");
                                 }
+                                dataApi.setOpenOrClose(temp.getBoolean("openOrClose"));
                                 modelWisata.add(dataApi);
                                 showWisata();
                             }
