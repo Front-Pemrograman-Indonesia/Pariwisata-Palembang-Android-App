@@ -45,7 +45,7 @@ public class DetailWisataActivity extends AppCompatActivity implements OnMapRead
         setContentView(R.layout.activity_detail_wisata);
 
         tbDetailWisata = findViewById(R.id.tbDetailWisata);
-        tbDetailWisata.setTitle("Detail Wisata");
+        tbDetailWisata.setTitle(R.string.tourist_destination_details_header);
         setSupportActionBar(tbDetailWisata);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

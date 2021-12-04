@@ -21,4 +21,7 @@
     <string name="tourist_destination_wait">Mohon Tunggu</string>
     <string name="tourist_destination_wait_description">Sedang mencoba menampilkan data</string>
     <string name="tourist_destination_distance">Jarak ke tempat wisata: </string>
+
+    // Tourist Destination Details
+    <string name="tourist_destination_details_header">Detail Tempat Wisata</string>
 </resources>
