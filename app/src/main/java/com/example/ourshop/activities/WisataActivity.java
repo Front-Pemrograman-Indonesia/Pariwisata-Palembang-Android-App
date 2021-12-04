@@ -164,7 +164,7 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
                                 if(temp.getBoolean("locationStatus")){
                                     dataApi.setJarakWisata(getString(R.string.tourist_destination_distance) + " " + temp.getString("distance") + " " + getString(R.string.kilometer));
                                 } else {
-                                    dataApi.setJarakWisata("Izinkan dan hidupkan lokasi untuk dapat mengetahui jarak ke tempat wisata");
+                                    dataApi.setJarakWisata(getString(R.string.location_permit_warning));
                                 }
                                 dataApi.setOpenOrClose(temp.getBoolean("openOrClose"));
                                 modelWisata.add(dataApi);
