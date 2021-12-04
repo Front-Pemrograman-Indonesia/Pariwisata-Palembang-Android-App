@@ -11,6 +11,7 @@
     <string name="wait">Mohon Tunggu</string>
     <string name="wait_description">Sedang mencoba menampilkan data</string>
     <string name="kilometer">km</string>
+    <string name="location_permit_warning">Give permit and turn on the device location to know the distance to destination</string>
 
     // home
     <string name="home_app_name">Palembang Tour</string>

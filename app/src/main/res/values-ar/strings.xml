@@ -11,6 +11,7 @@
     <string name="wait">ارجوك انتظر</string>
     <string name="wait_description">إظهار البيانات</string>
     <string name="kilometer">كيلومتر</string>
+    <string name="location_permit_warning">امنح الإذن وقم بتشغيل موقع الجهاز لمعرفة المسافة إلى الوجهة</string>
 
     // home
     <string name="home_app_name">الجذب السياحي في باليمبانج</string>

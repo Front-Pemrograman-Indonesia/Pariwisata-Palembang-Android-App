@@ -11,6 +11,7 @@
     <string name="wait">Mohon Tunggu</string>
     <string name="wait_description">Sedang mencoba menampilkan data</string>
     <string name="kilometer">km</string>
+    <string name="location_permit_warning">Izinkan dan hidupkan lokasi untuk dapat mengetahui jarak ke tempat wisata"</string>
 
     // home
     <string name="home_app_name">Wisata Palembang</string>
