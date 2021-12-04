@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">الجذب السياحي في باليمبانج</string>
+    <string name="todo">TODO</string>
+    <string name="splashscreen">splashscreen</string>
+
+    // commons
+    <string name="open">مفتوح</string>
+    <string name="close">مغلق</string>
+    <string name="tourist_destination_wait">ارجوك انتظر</string>
+    <string name="tourist_destination_wait_description">إظهار البيانات</string>
+    <string name="wait">ارجوك انتظر</string>
+    <string name="wait_description">إظهار البيانات</string>
+    <string name="kilometer">كيلومتر</string>
+
+    // home
+    <string name="home_app_name">الجذب السياحي في باليمبانج</string>
+    <string name="home_tourist_destination">مقصد سياحي</string>
+    <string name="home_tourist_destination_description">ابحث عن أقرب وجهة سفر</string>
+    <string name="home_restaurant">مطعم</string>
+    <string name="home_restaurant_description">ابحث عن أقرب مطعم</string>
+    <string name="home_hotel">إقامة</string>
+    <string name="home_hotel_description">ابحث عن أقرب مكان للإقامة</string>
+    <string name="home_place_of_worship">دار عبادة</string>
+    <string name="home_place_of_worship_description">ابحث عن أقرب دار عبادة</string>
+
+    // Tourist Destination
+    <string name="tourist_destination_header">الوجهات السياحية في باليمبانج</string>
+    <string name="tourist_destination_distance">المسافة إلى مناطق الجذب السياحي: </string>
+
+    // Tourist Destination Details
+    <string name="tourist_destination_details_header">تفاصيل المزارات السياحية</string>
+
+    // Restaurants
+    <string name="restaurant_header">مطاعم باليمبانج</string>
+
+    // Restaurant Details
+    <string name="restaurant_details_header">تفاصيل المطعم</string>
+
+    // Hotels
+    <string name="hotels_header">حيث البقاء في باليمبانج</string>
+
+    // Hotel Details
+    <string name="hotel_details_header">تفاصيل الإقامة</string>
+
+    // Places of Worship
+    <string name="place_of_worship_header">دور العبادة في باليمبانج</string>
+</resources>

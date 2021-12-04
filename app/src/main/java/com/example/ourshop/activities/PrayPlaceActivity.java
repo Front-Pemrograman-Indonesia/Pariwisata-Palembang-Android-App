@@ -27,6 +27,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class PrayPlaceActivity extends AppCompatActivity implements HotelAdapter.onSelectData {
 
@@ -63,7 +64,8 @@ public class PrayPlaceActivity extends AppCompatActivity implements HotelAdapter
 
     private void getHotel() {
         progressDialog.show();
-        AndroidNetworking.get(Api.JenisTempatIbadah)
+        String API = Api.JenisTempatIbadah + "?language=" + Locale.getDefault().getLanguage();
+        AndroidNetworking.get(API)
                 .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
