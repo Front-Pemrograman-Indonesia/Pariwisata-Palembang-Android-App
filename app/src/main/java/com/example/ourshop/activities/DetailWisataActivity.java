@@ -29,6 +29,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Locale;
+
 public class DetailWisataActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     Toolbar tbDetailWisata;
@@ -79,7 +81,8 @@ public class DetailWisataActivity extends AppCompatActivity implements OnMapRead
     }
 
     private void getDetailWisata() {
-        AndroidNetworking.get(Api.DetailWisata)
+        String API = Api.DetailWisata + "?language=" + Locale.getDefault().getLanguage();
+        AndroidNetworking.get(API)
                 .addPathParameter("id", idWisata)
                 .setPriority(Priority.HIGH)
                 .build()
