@@ -17,4 +17,5 @@
     <color name="mera">#F81C1C</color>
     <color name="darker_gray">#FFFFFF</color>
     <color name="background_darker_gray">#525151</color>
+    <color name="open_or_close">#FF0000</color>
 </resources>

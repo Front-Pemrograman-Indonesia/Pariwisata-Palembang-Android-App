@@ -1,6 +1,7 @@
 package com.example.ourshop.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,12 +52,21 @@ public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder
 
         holder.tvWisata.setText(data.getTxtNamaWisata());
         holder.tvJarakWisata.setText(data.getJarakWisata());
+
         holder.cvWisata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onSelectData.onSelected(data);
             }
         });
+        if (
+            data.getOpenOrClose()
+        ) {
+            holder.tvOpenOrClose.setText("open");
+            holder.tvOpenOrClose.setTextColor(Color.GREEN);
+        } else{
+            holder.tvOpenOrClose.setText("close");
+        }
     }
 
     @Override
@@ -72,6 +82,7 @@ public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder
         public TextView tvJarakWisata;
         public CardView cvWisata;
         public ImageView imgWisata;
+        public TextView tvOpenOrClose;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -80,6 +91,7 @@ public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder
             tvJarakWisata = itemView.findViewById(R.id.tvJarakWisata);
             tvKategori = itemView.findViewById(R.id.tvKategori);
             imgWisata = itemView.findViewById(R.id.imgWisata);
+            tvOpenOrClose = itemView.findViewById(R.id.tvOpenOrClose);
         }
     }
 
