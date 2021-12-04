@@ -37,6 +37,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class WisataActivity extends AppCompatActivity implements WisataAdapter.onSelectData {
 
@@ -124,18 +125,18 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
                     Log.e("TAG IS ANYTHING", "last known is not null");
                     longitude = location.getLongitude();
                     latitude = location.getLatitude();
-                    API = Api.Wisata + "?" + "longitude=" + longitude + "&" + "latitude" + latitude;
+                    API = Api.Wisata + "?" + "longitude=" + longitude + "&" + "latitude" + latitude + "&" + "language=" + Locale.getDefault().getLanguage();
 
                     getWisata();
                 }
             } else {
-                API = Api.Wisata;
+                API = Api.Wisata + "?language=" + Locale.getDefault().getLanguage();
                 getWisata();
             }
         } else {
             // User did not grant permit to acces the location
             // Use the API that did not need any permit from the user (without latitude and longitude)
-            API = Api.Wisata;
+            API = Api.Wisata + "?language=" + Locale.getDefault().getLanguage();
             getWisata();
         }
     }
@@ -161,7 +162,7 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
                                 dataApi.setGambarWisata(Api.BaseUrl + temp.getString("thumbnail"));
                                 dataApi.setKoordinatWisata(temp.getString("latitude") + ',' + temp.getString("longitude"));
                                 if(temp.getBoolean("locationStatus")){
-                                    dataApi.setJarakWisata(getString(R.string.tourist_destination_distance) + " " + temp.getString("distance") + " km");
+                                    dataApi.setJarakWisata(getString(R.string.tourist_destination_distance) + " " + temp.getString("distance") + " " + getString(R.string.kilometer));
                                 } else {
                                     dataApi.setJarakWisata("Izinkan dan hidupkan lokasi untuk dapat mengetahui jarak ke tempat wisata");
                                 }
