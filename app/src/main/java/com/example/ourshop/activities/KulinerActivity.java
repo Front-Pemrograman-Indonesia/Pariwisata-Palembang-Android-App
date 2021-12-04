@@ -28,6 +28,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class KulinerActivity extends AppCompatActivity implements KulinerAdapter.onSelectData {
 
@@ -52,9 +53,9 @@ public class KulinerActivity extends AppCompatActivity implements KulinerAdapter
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Mohon Tunggu");
+        progressDialog.setTitle(R.string.wait);
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("Sedang menampilkan data...");
+        progressDialog.setMessage(getString(R.string.wait_description));
 
         rvKuliner = findViewById(R.id.rvKuliner);
         GridLayoutManager mLayoutManager = new GridLayoutManager(this,
@@ -69,7 +70,8 @@ public class KulinerActivity extends AppCompatActivity implements KulinerAdapter
 
     private void getKuliner() {
         progressDialog.show();
-        AndroidNetworking.get(Api.Kuliner)
+        String API = Api.Kuliner + "?language=" + Locale.getDefault().getLanguage();
+        AndroidNetworking.get(API)
                 .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
