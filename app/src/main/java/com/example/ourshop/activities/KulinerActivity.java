@@ -43,8 +43,10 @@ public class KulinerActivity extends AppCompatActivity implements KulinerAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kuliner);
 
+        // set the screen header
         tbKuliner = findViewById(R.id.toolbar_kuliner);
-        tbKuliner.setTitle("Daftar Kuliner Palembang");
+        tbKuliner.setTitle(R.string.restaurant_header);
+
         setSupportActionBar(tbKuliner);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

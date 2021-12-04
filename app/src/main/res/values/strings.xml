@@ -24,4 +24,7 @@
 
     // Tourist Destination Details
     <string name="tourist_destination_details_header">Destination Details</string>
+
+    // Restaurants
+    <string name="restaurant_header">Restaurants in Palembang</string>
 </resources>
