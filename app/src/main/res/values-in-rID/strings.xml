@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Wisata Palembang</string>
+    <string name="todo">TODO</string>
+    <string name="splashscreen">splashscreen</string>
+    <string name="open">buka</string>
+    <string name="close">tutup</string>
+
+    // home
+    <string name="home_app_name">Wisata Palembang</string>
+    <string name="home_tourist_destination">Destinasi Wisata</string>
+    <string name="home_tourist_destination_description">Temukan destinasi wisata terdekat</string>
+    <string name="home_restaurant">Rumah Makan</string>
+    <string name="home_restaurant_description">Temukan rumah makan terdekat</string>
+    <string name="home_hotel">Penginapan</string>
+    <string name="home_hotel_description">Temukan tempat penginapan terdekat</string>
+    <string name="home_place_of_worship">close</string>
+    <string name="home_place_of_worship_description">close</string>
+
+    // Tourist Destination
+    <string name="tourist_destination_header">Destinasi Wisata di Palembang</string>
+    <string name="tourist_destination_wait">Mohon Tunggu</string>
+    <string name="tourist_destination_wait_description">Sedang mencoba menampilkan data</string>
+    <string name="tourist_destination_distance">Jarak ke tempat wisata: </string>
+</resources>
