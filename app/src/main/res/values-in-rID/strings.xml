@@ -6,6 +6,10 @@
     // commons
     <string name="open">buka</string>
     <string name="close">tutup</string>
+    <string name="tourist_destination_wait">Mohon Tunggu</string>
+    <string name="tourist_destination_wait_description">Sedang mencoba menampilkan data</string>
+    <string name="wait">Mohon Tunggu</string>
+    <string name="wait_description">Sedang mencoba menampilkan data</string>
 
     // home
     <string name="home_app_name">Wisata Palembang</string>
@@ -20,8 +24,6 @@
 
     // Tourist Destination
     <string name="tourist_destination_header">Destinasi Wisata di Palembang</string>
-    <string name="tourist_destination_wait">Mohon Tunggu</string>
-    <string name="tourist_destination_wait_description">Sedang mencoba menampilkan data</string>
     <string name="tourist_destination_distance">Jarak ke tempat wisata: </string>
 
     // Tourist Destination Details
@@ -38,4 +40,7 @@
 
     // Hotel Details
     <string name="hotel_details_header">Detail Penginapan</string>
+
+    // Places of Worship
+    <string name="place_of_worship_header">Rumah Ibadah di Palembang</string>
 </resources>
