@@ -55,16 +55,19 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wisata);
         Log.e("TAG IS ANYTHING", "Final AP1I" + API);
+
+        // set the header in xml file
         tbWisata = findViewById(R.id.toolbar_wisata);
-        tbWisata.setTitle("Daftar Wisata Palembang");
+        tbWisata.setTitle(R.string.tourist_destination_header);
+
         setSupportActionBar(tbWisata);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Mohon Tunggu");
+        progressDialog.setTitle(R.string.tourist_destination_wait);
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("Sedang menampilkan data...");
+        progressDialog.setMessage(getString(R.string.tourist_destination_wait_description));
 
         rvWisata = findViewById(R.id.rvWisata);
         GridLayoutManager mLayoutManager = new GridLayoutManager(this,
@@ -158,7 +161,7 @@ public class WisataActivity extends AppCompatActivity implements WisataAdapter.o
                                 dataApi.setGambarWisata(Api.BaseUrl + temp.getString("thumbnail"));
                                 dataApi.setKoordinatWisata(temp.getString("latitude") + ',' + temp.getString("longitude"));
                                 if(temp.getBoolean("locationStatus")){
-                                    dataApi.setJarakWisata("jarak anda ke tempat wisata: " + temp.getString("distance") + " km");
+                                    dataApi.setJarakWisata(getString(R.string.tourist_destination_distance) + " " + temp.getString("distance") + " km");
                                 } else {
                                     dataApi.setJarakWisata("Izinkan dan hidupkan lokasi untuk dapat mengetahui jarak ke tempat wisata");
                                 }

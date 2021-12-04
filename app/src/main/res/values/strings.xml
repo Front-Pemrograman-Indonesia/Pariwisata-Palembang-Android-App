@@ -1,5 +1,24 @@
 <resources>
-    <string name="app_name">Wisata Palembang</string>
+    <string name="app_name">Palembang Tour</string>
     <string name="todo">TODO</string>
     <string name="splashscreen">splashscreen</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+    // home
+    <string name="home_app_name">Palembang Tour</string>
+    <string name="home_tourist_destination">Tourist Destination</string>
+    <string name="home_tourist_destination_description">Find the closest tourist destinations</string>
+    <string name="home_restaurant">Restaurant</string>
+    <string name="home_restaurant_description">Find the closest restaurants</string>
+    <string name="home_hotel">Hotel</string>
+    <string name="home_hotel_description">Find the closest hotels</string>
+    <string name="home_place_of_worship">Place of worship</string>
+    <string name="home_place_of_worship_description">Find the closest places of worship</string>
+
+    // Tourist Destination
+    <string name="tourist_destination_header">Tourist Destinations in Palembang</string>
+    <string name="tourist_destination_wait">Please Wait</string>
+    <string name="tourist_destination_wait_description">Trying to show the data...</string>
+    <string name="tourist_destination_distance">distance: </string>
 </resources>
