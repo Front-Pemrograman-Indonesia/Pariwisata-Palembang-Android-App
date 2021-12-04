@@ -9,12 +9,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.ourshop.R;
+import com.example.ourshop.adapter.ViewPagerAdapter;
 import com.example.ourshop.api.Api;
 import com.example.ourshop.model.ModelWisata;
 import com.bumptech.glide.Glide;
@@ -26,20 +28,29 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
 
 public class DetailWisataActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     Toolbar tbDetailWisata;
     TextView tvNamaWisata, tvDescWisata;
-    ImageView imgWisata;
     String idWisata, NamaWisata, Desc;
     ModelWisata modelWisata;
     GoogleMap googleMaps;
     private String koordinat;
+    private ArrayList<String> images = new ArrayList<>();
+
+    //creating object of ViewPager
+    ViewPager mViewPager;
+
+    //Creating Object of ViewPagerAdapter
+    ViewPagerAdapter mViewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,15 +77,8 @@ public class DetailWisataActivity extends AppCompatActivity implements OnMapRead
             NamaWisata = modelWisata.getTxtNamaWisata();
 
             //set Id
-            imgWisata = findViewById(R.id.imgWisata);
             tvNamaWisata = findViewById(R.id.tvNamaWisata);
             tvDescWisata = findViewById(R.id.tvDescWisata);
-
-            //get Image
-            Glide.with(this)
-                    .load(modelWisata.getGambarWisata())
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(imgWisata);
 
             getDetailWisata();
         }
@@ -102,7 +106,23 @@ public class DetailWisataActivity extends AppCompatActivity implements OnMapRead
                             tvNamaWisata.setText(NamaWisata);
                             tvDescWisata.setText(Desc);
                             koordinat = respon1.getString("latitude") + respon1.getString("longitude");
+                            Log.e("TAG IS ANYTHING","disini");
+                            JSONArray arrJson = respon1.getJSONArray("gallery");
+                            Log.e("TAG IS ANYTHING","disini2");
+                            System.out.println(arrJson);
+                            for(int i = 0; i < arrJson.length(); i++)
+                                images.add(Api.BaseUrl + arrJson.getString(i));
 
+                            Log.e("JSON ARRAY","JSON ARRAY" + images);
+
+                            //Initializing the ViewPager Object
+                            mViewPager = findViewById(R.id.viewPagerMain);
+
+                            //Initializing the ViewPagerAdapter
+                            mViewPagerAdapter = new ViewPagerAdapter(DetailWisataActivity.this, images);
+
+                            //Adding the Adapter to the ViewPager
+                            mViewPager.setAdapter(mViewPagerAdapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(DetailWisataActivity.this,

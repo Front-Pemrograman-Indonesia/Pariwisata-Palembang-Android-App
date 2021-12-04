@@ -41,17 +41,11 @@
                 app:cardCornerRadius="5dp"
                 app:cardElevation="4dp">
 
-                <LinearLayout
+                <!-- viewpager to show images -->
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPagerMain"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/imgWisata"
-                        android:layout_width="match_parent"
-                        android:layout_height="250dp"
-                        android:scaleType="fitXY" />
-
-                </LinearLayout>
+                    android:layout_height="match_parent"/>
 
             </androidx.cardview.widget.CardView>
 
