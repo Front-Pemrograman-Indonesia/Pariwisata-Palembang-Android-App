@@ -29,8 +29,10 @@ public class DetailHotelActivity extends AppCompatActivity implements OnMapReady
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_hotel);
 
+        // set the detail hotel header
         tbDetailHotel = findViewById(R.id.tbDetailHotel);
-        tbDetailHotel.setTitle("Detail Hotel");
+        tbDetailHotel.setTitle(R.string.hotel_details_header);
+
         setSupportActionBar(tbDetailHotel);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
