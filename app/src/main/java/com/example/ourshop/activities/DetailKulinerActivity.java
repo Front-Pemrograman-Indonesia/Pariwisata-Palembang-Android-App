@@ -40,7 +40,7 @@ public class DetailKulinerActivity extends AppCompatActivity implements OnMapRea
         setContentView(R.layout.activity_detail_kuliner);
         Log.e("TAG IS ANYTHING", "setting the longitude latitude11" + modelKuliner);
         tbDetailKuliner = findViewById(R.id.tbDetailKuliner);
-        tbDetailKuliner.setTitle("Detail Kuliner");
+        tbDetailKuliner.setTitle(R.string.restaurant_details_header);
         setSupportActionBar(tbDetailKuliner);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
