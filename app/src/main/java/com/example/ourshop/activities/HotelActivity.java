@@ -42,7 +42,7 @@ public class HotelActivity extends AppCompatActivity implements HotelAdapter.onS
         setContentView(R.layout.activity_hotel);
 
         tbHotel = findViewById(R.id.toolbar_hotel);
-        tbHotel.setTitle("Daftar Hotel Palembang");
+        tbHotel.setTitle(R.string.hotels_header);
         setSupportActionBar(tbHotel);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

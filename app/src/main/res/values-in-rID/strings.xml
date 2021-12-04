@@ -32,4 +32,7 @@
 
     // Restaurant Details
     <string name="restaurant_details_header">Detail Rumah Makan</string>
+
+    // Hotels
+    <string name="hotels_header">Tempat Penginapan di Palembang</string>
 </resources>
