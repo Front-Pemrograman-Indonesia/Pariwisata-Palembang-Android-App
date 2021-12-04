@@ -10,6 +10,7 @@
     <string name="tourist_destination_wait_description">Sedang mencoba menampilkan data</string>
     <string name="wait">Mohon Tunggu</string>
     <string name="wait_description">Sedang mencoba menampilkan data</string>
+    <string name="kilometer">km</string>
 
     // home
     <string name="home_app_name">Palembang Tour</string>
