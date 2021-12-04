@@ -26,6 +26,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Locale;
+
 public class DetailKulinerActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     Toolbar tbDetailKuliner;
@@ -61,7 +63,8 @@ public class DetailKulinerActivity extends AppCompatActivity implements OnMapRea
     }
 
     private void getDetailKuliner() {
-        AndroidNetworking.get(Api.DetailKuliner)
+        String API = Api.DetailKuliner + "?language=" + Locale.getDefault().getLanguage();
+        AndroidNetworking.get(API)
                 .addPathParameter("id", idKuliner)
                 .setPriority(Priority.HIGH)
                 .build()
