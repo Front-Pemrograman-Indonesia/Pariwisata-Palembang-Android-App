@@ -42,8 +42,10 @@ public class DetailPrayPlaceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pray_place);
 
+        // set header
         tbPlace = findViewById(R.id.toolbar_place);
         tbPlace.setTitle("Daftar Tempat Ibadah");
+
         setSupportActionBar(tbPlace);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -59,6 +61,7 @@ public class DetailPrayPlaceActivity extends AppCompatActivity {
 
         modelHotel = (ModelHotel) getIntent().getSerializableExtra("detailHotel");
         if (modelHotel != null) {
+            tbPlace.setTitle(modelHotel.getTxtNamaHotel());
             //get String
             id = modelHotel.get_id();
         }
