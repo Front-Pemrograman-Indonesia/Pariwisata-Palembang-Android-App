@@ -2,6 +2,8 @@
     <string name="app_name">Wisata Palembang</string>
     <string name="todo">TODO</string>
     <string name="splashscreen">splashscreen</string>
+
+    // commons
     <string name="open">buka</string>
     <string name="close">tutup</string>
 
@@ -27,4 +29,7 @@
 
     // Restaurants
     <string name="restaurant_header">Rumah Makan di Palembang</string>
+
+    // Restaurant Details
+    <string name="restaurant_details_header">Detail Rumah Makan</string>
 </resources>
