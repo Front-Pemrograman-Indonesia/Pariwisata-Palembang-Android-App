@@ -35,4 +35,7 @@
 
     // Hotels
     <string name="hotels_header">Tempat Penginapan di Palembang</string>
+
+    // Hotel Details
+    <string name="hotel_details_header">Detail Penginapan</string>
 </resources>
