@@ -21,7 +21,7 @@
     // Tourist Destination
     <string name="tourist_destination_header">Tourist Destinations in Palembang</string>
     <string name="tourist_destination_wait">Please Wait</string>
-    <string name="tourist_destination_wait_description">Trying to show the data...</string>
+    <string name="tourist_destination_wait_description">Trying to show the data…</string>
     <string name="tourist_destination_distance">distance: </string>
 
     // Tourist Destination Details
@@ -35,4 +35,7 @@
 
     // Hotels
     <string name="hotels_header">Hotels in Palembang</string>
+
+    // Hotel Details
+    <string name="hotel_details_header">Hotel Details</string>
 </resources>
