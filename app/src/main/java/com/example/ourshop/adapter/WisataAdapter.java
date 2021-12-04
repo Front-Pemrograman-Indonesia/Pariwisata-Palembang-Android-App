@@ -62,10 +62,10 @@ public class WisataAdapter extends RecyclerView.Adapter<WisataAdapter.ViewHolder
         if (
             data.getOpenOrClose()
         ) {
-            holder.tvOpenOrClose.setText("open");
+            holder.tvOpenOrClose.setText(R.string.open);
             holder.tvOpenOrClose.setTextColor(Color.GREEN);
         } else{
-            holder.tvOpenOrClose.setText("close");
+            holder.tvOpenOrClose.setText(R.string.close);
         }
     }
 
