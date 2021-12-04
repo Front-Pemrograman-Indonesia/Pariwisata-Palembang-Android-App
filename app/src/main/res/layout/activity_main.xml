@@ -54,7 +54,7 @@
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:layout_marginTop="10dp"
-                            android:text="Wisata"/>
+                            android:text="@string/home_tourist_destination"/>
                         <View
                             android:layout_width="100dp"
                             android:layout_height="1px"
@@ -66,7 +66,7 @@
                             android:gravity="center"
                             android:textColor="@color/darker_gray"
                             android:padding="5dp"
-                            android:text="Temukan tempat wisata terdekat"/>
+                            android:text="@string/home_tourist_destination_description"/>
 
                     </LinearLayout>
 
@@ -103,7 +103,7 @@
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:layout_marginTop="10dp"
-                            android:text="Rumah Makan"/>
+                            android:text="@string/home_restaurant"/>
                         <View
                             android:layout_width="100dp"
                             android:layout_height="1px"
@@ -115,7 +115,7 @@
                             android:gravity="center"
                             android:textColor="@color/darker_gray"
                             android:padding="5dp"
-                            android:text="Temukan rumah makan terdekat"/>
+                            android:text="@string/home_restaurant_description"/>
 
                     </LinearLayout>
 
@@ -161,7 +161,7 @@
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:layout_marginTop="10dp"
-                            android:text="Hotel"/>
+                            android:text="@string/home_hotel"/>
                         <View
                             android:layout_width="100dp"
                             android:layout_height="1px"
@@ -173,7 +173,7 @@
                             android:gravity="center"
                             android:textColor="@color/darker_gray"
                             android:padding="5dp"
-                            android:text="Temukan tempat penginapan terdekat"/>
+                            android:text="@string/home_hotel_description"/>
 
                     </LinearLayout>
 
@@ -210,7 +210,7 @@
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:layout_marginTop="10dp"
-                            android:text="Tempat Ibadah"/>
+                            android:text="@string/home_place_of_worship"/>
                         <View
                             android:layout_width="100dp"
                             android:layout_height="1px"
@@ -222,7 +222,7 @@
                             android:gravity="center"
                             android:textColor="@color/darker_gray"
                             android:padding="5dp"
-                            android:text="Temukan tempat ibadah terdekat"/>
+                            android:text="@string/home_place_of_worship_description"/>
 
                     </LinearLayout>
 
