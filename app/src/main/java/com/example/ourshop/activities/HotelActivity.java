@@ -48,9 +48,9 @@ public class HotelActivity extends AppCompatActivity implements HotelAdapter.onS
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Mohon Tunggu");
+        progressDialog.setTitle(R.string.wait);
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("Sedang menampilkan data...");
+        progressDialog.setMessage(getString(R.string.wait_description));
 
         rvHotel = findViewById(R.id.rvHotel);
         rvHotel.setHasFixedSize(true);

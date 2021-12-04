@@ -41,16 +41,18 @@ public class PrayPlaceActivity extends AppCompatActivity implements HotelAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel);
 
+        // set the header
         tbHotel = findViewById(R.id.toolbar_hotel);
-        tbHotel.setTitle("Daftar Tempat Ibadah");
+        tbHotel.setTitle(R.string.place_of_worship_header);
+
         setSupportActionBar(tbHotel);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Mohon Tunggu");
+        progressDialog.setTitle(R.string.wait);
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("Sedang menampilkan data...");
+        progressDialog.setMessage(getString(R.string.wait_description));
 
         rvHotel = findViewById(R.id.rvHotel);
         rvHotel.setHasFixedSize(true);
