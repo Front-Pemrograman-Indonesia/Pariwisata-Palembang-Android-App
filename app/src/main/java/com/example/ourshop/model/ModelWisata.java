@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class ModelWisata implements Serializable {
 
-    private String idWisata, txtJarakWisata, txtNamaWisata, GambarWisata, KategoriWisata;
+    private String idWisata, txtJarakWisata, txtNamaWisata, GambarWisata, KategoriWisata, KoordinatWisata;
 
     // Data Wisata
     public String getIdWisata() {
@@ -36,5 +36,13 @@ public class ModelWisata implements Serializable {
     }
     public void setGambarWisata(String gambarWisata) {
         GambarWisata = gambarWisata;
+    }
+
+    // Data Koordinat Wisata
+    public String getKoordinatWisata() {
+        return KoordinatWisata;
+    }
+    public void setKoordinatWisata(String koordinatWisata) {
+        KoordinatWisata = koordinatWisata;
     }
 }

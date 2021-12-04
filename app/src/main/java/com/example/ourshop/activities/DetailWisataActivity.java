@@ -19,17 +19,25 @@ import com.example.ourshop.api.Api;
 import com.example.ourshop.model.ModelWisata;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DetailWisataActivity extends AppCompatActivity {
+public class DetailWisataActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     Toolbar tbDetailWisata;
     TextView tvNamaWisata, tvDescWisata;
     ImageView imgWisata;
     String idWisata, NamaWisata, Desc;
     ModelWisata modelWisata;
+    GoogleMap googleMaps;
+    private String koordinat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +49,16 @@ public class DetailWisataActivity extends AppCompatActivity {
         setSupportActionBar(tbDetailWisata);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Log.e("TAG IS ANYTHING", "setting the longitude latitude44" + modelWisata);
+
 
         modelWisata = (ModelWisata) getIntent().getSerializableExtra("detailWisata");
+
+        //show maps
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+        Log.e("TAG IS ANYTHING", "setting the longitude latitude44" + modelWisata.getKoordinatWisata());
         if (modelWisata != null) {
             idWisata = modelWisata.getIdWisata();
             NamaWisata = modelWisata.getTxtNamaWisata();
@@ -82,6 +98,7 @@ public class DetailWisataActivity extends AppCompatActivity {
                             //set Text
                             tvNamaWisata.setText(NamaWisata);
                             tvDescWisata.setText(Desc);
+                            koordinat = respon1.getString("latitude") + respon1.getString("longitude");
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -105,5 +122,23 @@ public class DetailWisataActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+//        Log.e("TAG IS ANYTHING", "setting the longitude latitude44" + modelWisata.getKoordinatWisata().split(","));
+        //get LatLong
+        String[] latlong = modelWisata.getKoordinatWisata().split(",");
+        double latitude = Double.parseDouble(latlong[0]);
+        double longitude = Double.parseDouble(latlong[1]);
+
+        googleMaps = googleMap;
+        LatLng latLng = new LatLng(latitude, longitude);
+        googleMaps.addMarker(new MarkerOptions().position(latLng).title(modelWisata.getTxtNamaWisata()));
+        googleMaps.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        googleMaps.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
+        googleMaps.getUiSettings().setAllGesturesEnabled(true);
+        googleMaps.getUiSettings().setZoomGesturesEnabled(true);
+        googleMaps.setTrafficEnabled(true);
     }
 }
