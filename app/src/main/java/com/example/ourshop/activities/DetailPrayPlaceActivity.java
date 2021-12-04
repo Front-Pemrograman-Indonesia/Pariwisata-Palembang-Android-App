@@ -26,6 +26,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class DetailPrayPlaceActivity extends AppCompatActivity {
 
@@ -71,7 +72,8 @@ public class DetailPrayPlaceActivity extends AppCompatActivity {
 
     private void getPrayPlace() {
         progressDialog.show();
-        AndroidNetworking.get(Api.TempatIbadah)
+        String API = Api.TempatIbadah + "?language=" + Locale.getDefault().getLanguage();
+        AndroidNetworking.get(API)
                 .addPathParameter("id", id)
                 .setPriority(Priority.HIGH)
                 .build()
