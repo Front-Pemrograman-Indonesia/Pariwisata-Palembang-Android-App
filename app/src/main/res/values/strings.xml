@@ -6,15 +6,17 @@
     // commons
     <string name="open">open</string>
     <string name="close">close</string>
-    <string name="tourist_destination_wait">Mohon Tunggu</string>
-    <string name="tourist_destination_wait_description">Sedang mencoba menampilkan data</string>
-    <string name="wait">Mohon Tunggu</string>
-    <string name="wait_description">Sedang mencoba menampilkan data</string>
+    <string name="tourist_destination_wait">Please Wait</string>
+    <string name="tourist_destination_wait_description">we are trying to get the data</string>
+    <string name="wait">Please Wait</string>
+    <string name="wait_description">we are trying to get the data</string>
     <string name="kilometer">km</string>
     <string name="location_permit_warning">Give permit and turn on the device location to know the distance to destination</string>
 
     // home
     <string name="home_app_name">Palembang Tour</string>
+    <string name="home_location_warning">turn on location to know your location</string>
+    <string name="home_location_permit_warning">allow location detection to know your current location</string>
     <string name="home_tourist_destination">Tourist Destination</string>
     <string name="home_tourist_destination_description">Find the closest tourist destinations</string>
     <string name="home_restaurant">Restaurant</string>

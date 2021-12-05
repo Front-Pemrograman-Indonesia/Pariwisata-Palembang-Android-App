@@ -187,12 +187,12 @@ public class MainActivity extends AppCompatActivity {
                     getUserLocation();
                 }
             } else {
-                textView.setText("hidupkan lokasi untuk dapat mengetahui lokasi anda sekarang");
+                textView.setText(R.string.home_location_warning);
             }
         } else {
             // User did not grant permit to acces the location
             // Use the API that did not need any permit from the user (without latitude and longitude)
-            textView.setText("izinkan pendeteksian lokasi untuk dapat mengetahui lokasi anda sekarang");
+            textView.setText(R.string.home_location_permit_warning);
         }
     }
 
