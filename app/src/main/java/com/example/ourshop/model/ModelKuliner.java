@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class ModelKuliner implements Serializable {
 
-    private String idKuliner, txtNamaKuliner, txtAlamatKuliner, txtOpenTime, Koordinat, GambarKuliner, KategoriKuliner;
+    private String idKuliner, txtNamaKuliner, txtAlamatKuliner, txtOpenTime, Koordinat, GambarKuliner, KategoriKuliner, RestaurantDistance;
 
     // Data Id Kuliner
     public void setIdKuliner(String idKuliner) {
@@ -52,5 +52,14 @@ public class ModelKuliner implements Serializable {
     }
     public String getGambarKuliner() {
         return GambarKuliner;
+    }
+
+    // Distance Data
+    // Data Thumbnail
+    public void setRestaurantDistance(String restaurantDistance) {
+        this.RestaurantDistance = restaurantDistance;
+    }
+    public String getRestaurantDistance() {
+        return RestaurantDistance;
     }
 }

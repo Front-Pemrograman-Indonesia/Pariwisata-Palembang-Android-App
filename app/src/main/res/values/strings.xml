@@ -12,6 +12,7 @@
     <string name="wait_description">we are trying to get the data</string>
     <string name="kilometer">km</string>
     <string name="location_permit_warning">Give permit and turn on the device location to know the distance to destination</string>
+    <string name="tourist_destination_distance">distance: </string>
 
     // home
     <string name="home_app_name">Palembang Tour</string>
@@ -28,7 +29,6 @@
 
     // Tourist Destination
     <string name="tourist_destination_header">Tourist Destinations in Palembang</string>
-    <string name="tourist_destination_distance">distance: </string>
 
     // Tourist Destination Details
     <string name="tourist_destination_details_header">Destination Details</string>
