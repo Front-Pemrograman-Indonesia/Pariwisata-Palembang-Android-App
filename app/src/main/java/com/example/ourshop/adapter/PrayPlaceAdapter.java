@@ -66,6 +66,7 @@ public class PrayPlaceAdapter extends RecyclerView.Adapter<PrayPlaceAdapter.View
 
         holder.mapView.onResume();
         holder.txtPlaceName.setText(data.getTxtTempatIbadah());
+        holder.txtPlaceDistance.setText((data.getWorshipPlaceDistance()));
     }
 
     @Override
@@ -81,6 +82,7 @@ public class PrayPlaceAdapter extends RecyclerView.Adapter<PrayPlaceAdapter.View
     class ViewHolder extends RecyclerView.ViewHolder implements OnMapReadyCallback {
 
         public TextView txtPlaceName;
+        public TextView txtPlaceDistance;
         public CardView cvPrayList;
         public MapView mapView;
         private GoogleMap mGoogleMap;
@@ -95,6 +97,7 @@ public class PrayPlaceAdapter extends RecyclerView.Adapter<PrayPlaceAdapter.View
             cvPrayList = itemView.findViewById(R.id.cvPrayList);
             mapView = itemView.findViewById(R.id.mapView);
             txtPlaceName = itemView.findViewById(R.id.txtPlaceName);
+            txtPlaceDistance = itemView.findViewById((R.id.tvWorshipPLaceDistance));
 
             mapView.onCreate(null);
             mapView.getMapAsync(this);
