@@ -56,6 +56,7 @@ public class KulinerAdapter extends RecyclerView.Adapter<KulinerAdapter.ViewHold
                 onSelectData.onSelected(data);
             }
         });
+        holder.tvRestaurantDistance.setText((data.getRestaurantDistance()));
     }
 
     @Override
@@ -70,6 +71,7 @@ public class KulinerAdapter extends RecyclerView.Adapter<KulinerAdapter.ViewHold
         public TextView tvKategori;
         public CardView cvKuliner;
         public ImageView imgKuliner;
+        public TextView tvRestaurantDistance;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -77,6 +79,7 @@ public class KulinerAdapter extends RecyclerView.Adapter<KulinerAdapter.ViewHold
             tvKuliner = itemView.findViewById(R.id.tvKuliner);
             tvKategori = itemView.findViewById(R.id.tvKategori);
             imgKuliner = itemView.findViewById(R.id.imgKuliner);
+            tvRestaurantDistance = itemView.findViewById(R.id.tvRestaurantDistance);
         }
     }
 
