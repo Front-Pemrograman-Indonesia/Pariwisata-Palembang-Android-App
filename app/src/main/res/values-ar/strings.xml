@@ -12,6 +12,7 @@
     <string name="wait_description">إظهار البيانات</string>
     <string name="kilometer">كيلومتر</string>
     <string name="location_permit_warning">امنح الإذن وقم بتشغيل موقع الجهاز لمعرفة المسافة إلى الوجهة</string>
+    <string name="tourist_destination_distance">مسافة: </string>
 
     // home
     <string name="home_app_name">الجذب السياحي في باليمبانج</string>
@@ -28,7 +29,6 @@
 
     // Tourist Destination
     <string name="tourist_destination_header">الوجهات السياحية في باليمبانج</string>
-    <string name="tourist_destination_distance">المسافة إلى مناطق الجذب السياحي: </string>
 
     // Tourist Destination Details
     <string name="tourist_destination_details_header">تفاصيل المزارات السياحية</string>
