@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class ModelHotel implements Serializable {
 
-    private String _id, txtNamaHotel, txtAlamatHotel, txtNoTelp, Koordinat, GambarHotel;
+    private String _id, txtNamaHotel, txtAlamatHotel, txtNoTelp, Koordinat, GambarHotel, HotelDistance;
 
     public void set_id(String _id) {
         this._id = _id;
@@ -52,5 +52,13 @@ public class ModelHotel implements Serializable {
 
     public void setGambarHotel(String gambarHotel) {
         this.GambarHotel = gambarHotel;
+    }
+
+    // Hotel Distance
+    public void setHotelDistance(String hotelDistance) {
+        this.HotelDistance = hotelDistance;
+    }
+    public String getHotelDistance() {
+        return HotelDistance;
     }
 }

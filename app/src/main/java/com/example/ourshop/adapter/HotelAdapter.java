@@ -15,6 +15,8 @@ import com.example.ourshop.model.ModelHotel;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> {
@@ -56,6 +58,7 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
                 onSelectData.onSelected(data);
             }
         });
+        holder.tvHotelDistance.setText(data.getHotelDistance());
     }
 
     @Override
@@ -69,12 +72,14 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.ViewHolder> 
         public TextView tvNamaHotel;
         public RelativeLayout rlListHotel;
         public ImageView imgHotel;
+        public TextView tvHotelDistance;
 
         public ViewHolder(View itemView) {
             super(itemView);
             rlListHotel = itemView.findViewById(R.id.rlListHotel);
             tvNamaHotel = itemView.findViewById(R.id.tvNamaHotel);
             imgHotel = itemView.findViewById(R.id.imgHotel);
+            tvHotelDistance = itemView.findViewById((R.id.tvHotelDistance));
         }
     }
 }

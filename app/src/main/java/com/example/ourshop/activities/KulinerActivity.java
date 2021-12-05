@@ -137,7 +137,6 @@ public class KulinerActivity extends AppCompatActivity implements KulinerAdapter
             API = Api.Kuliner + "?language=" + Locale.getDefault().getLanguage();
             getKuliner();
         }
-        getKuliner();
     }
 
     private void getKuliner() {
