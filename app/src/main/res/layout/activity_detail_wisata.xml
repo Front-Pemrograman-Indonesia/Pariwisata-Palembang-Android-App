@@ -141,6 +141,32 @@
 
                         </RelativeLayout>
 
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp">
+
+                            <ImageView
+                                android:id="@+id/ivOpenHours"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentStart="true"
+                                android:background="@drawable/bg_circle_radius_primary"
+                                android:padding="10dp"
+                                android:src="@drawable/ic_dtl_desc"
+                                app:tint="@android:color/white" />
+
+                            <TextView
+                                android:id="@+id/tvOpenHours"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_marginStart="20dp"
+                                android:layout_toEndOf="@+id/ivOpenHours"
+                                android:textSize="14sp" />
+
+                        </RelativeLayout>
+
                     </LinearLayout>
 
                 </LinearLayout>
