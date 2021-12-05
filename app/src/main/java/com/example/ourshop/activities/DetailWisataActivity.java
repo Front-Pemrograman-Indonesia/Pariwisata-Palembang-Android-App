@@ -39,7 +39,7 @@ import java.util.Locale;
 public class DetailWisataActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     Toolbar tbDetailWisata;
-    TextView tvNamaWisata, tvDescWisata;
+    TextView tvNamaWisata, tvDescWisata, tvOpenHours;
     String idWisata, NamaWisata, Desc;
     ModelWisata modelWisata;
     GoogleMap googleMaps;
@@ -79,6 +79,7 @@ public class DetailWisataActivity extends AppCompatActivity implements OnMapRead
             //set Id
             tvNamaWisata = findViewById(R.id.tvNamaWisata);
             tvDescWisata = findViewById(R.id.tvDescWisata);
+            tvOpenHours = findViewById(R.id.tvOpenHours);
 
             getDetailWisata();
         }
@@ -94,26 +95,19 @@ public class DetailWisataActivity extends AppCompatActivity implements OnMapRead
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            Log.e("TAG IS ANYTHING","YOUR MESSAGE"+response);
                             JSONObject respon1 = response.getJSONObject("data");
 
-                            Log.e("TAG IS ANYTHING","YOUR MESSAGE"+respon1);
-                            NamaWisata = respon1.getString("name");
-                            Desc = respon1.getString("description");
-                            Log.e("TAG IS ANYTHING","YOUR MESSAGE"+NamaWisata);
-
                             //set Text
-                            tvNamaWisata.setText(NamaWisata);
-                            tvDescWisata.setText(Desc);
+                            tvNamaWisata.setText(respon1.getString("name"));
+                            tvDescWisata.setText(respon1.getString("description"));
+                            tvOpenHours.setText(respon1.getString("openHours"));
                             koordinat = respon1.getString("latitude") + respon1.getString("longitude");
-                            Log.e("TAG IS ANYTHING","disini");
+
+                            // set the images slider with pager
                             JSONArray arrJson = respon1.getJSONArray("gallery");
-                            Log.e("TAG IS ANYTHING","disini2");
-                            System.out.println(arrJson);
+
                             for(int i = 0; i < arrJson.length(); i++)
                                 images.add(Api.BaseUrl + arrJson.getString(i));
-
-                            Log.e("JSON ARRAY","JSON ARRAY" + images);
 
                             //Initializing the ViewPager Object
                             mViewPager = findViewById(R.id.viewPagerMain);
