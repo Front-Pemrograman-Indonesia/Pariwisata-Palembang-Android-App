@@ -39,7 +39,7 @@ import java.util.Locale;
 public class DetailWisataActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     Toolbar tbDetailWisata;
-    TextView tvNamaWisata, tvDescWisata, tvOpenHours;
+    TextView tvNamaWisata, tvOpenHours;
     String idWisata, NamaWisata, Desc;
     ModelWisata modelWisata;
     GoogleMap googleMaps;
@@ -78,7 +78,6 @@ public class DetailWisataActivity extends AppCompatActivity implements OnMapRead
 
             //set Id
             tvNamaWisata = findViewById(R.id.tvNamaWisata);
-            tvDescWisata = findViewById(R.id.tvDescWisata);
             tvOpenHours = findViewById(R.id.tvOpenHours);
 
             getDetailWisata();
@@ -99,7 +98,6 @@ public class DetailWisataActivity extends AppCompatActivity implements OnMapRead
 
                             //set Text
                             tvNamaWisata.setText(respon1.getString("name"));
-                            tvDescWisata.setText(respon1.getString("description"));
                             tvOpenHours.setText(respon1.getString("openHours"));
                             koordinat = respon1.getString("latitude") + respon1.getString("longitude");
 
