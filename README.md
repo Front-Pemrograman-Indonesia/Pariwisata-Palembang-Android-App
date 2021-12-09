@@ -6,6 +6,9 @@ this is an Android application that are made by the FPI team, this application h
 - ViewPager
 - AndroidNetworking : https://github.com/amitshekhariitbhu/Fast-Android-Networking
 
+## API for this project
+- https://github.com/Front-Pemrograman-Indonesia/Pariwisata-Palembang-API
+
 ## Contributor: 
 - https://github.com/SatriaAPN
 - https://github.com/alfariswijaya
